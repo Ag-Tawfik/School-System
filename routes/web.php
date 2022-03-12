@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +22,28 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/', function () {
         return view('auth.login');
     });
-
 });
 
 
- //==============================Translate all pages============================
+//==============================Translate all pages============================
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
-    ], function () {
+    ],
+    function () {
 
-     //==============================dashboard============================
-    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+        //==============================dashboard============================
+        Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-   //==============================dashboard============================
-    Route::group(['namespace' => 'Grades'], function () {
-        Route::resource('Grades', 'GradeController');
-    });
+        //==============================Grades============================
+        Route::group(['namespace' => 'Grades'], function () {
+            Route::resource('Grades', 'GradeController');
+        });
 
-
-});
+        //==============================Classrooms============================
+        Route::group(['namespace' => 'Classrooms'], function () {
+            Route::resource('Classrooms', 'ClassroomController');
+        });
+    }
+);
