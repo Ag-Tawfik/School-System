@@ -7,6 +7,7 @@ use App\Models\Grade;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClassroom;
 
 class ClassroomController extends Controller
 {
@@ -37,11 +38,26 @@ class ClassroomController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreClassroom $request)
     {
-        $My_Classes = Classroom::create($request->all());
-        return redirect()->back();
+
+        $List_Classes = $request->List_Classes;
+
+        try {
+            $validated = $request->validated();
+            foreach ($List_Classes as $List_Class) {
+                $My_Classes = new Classroom();
+                $My_Classes->Name_Class = ['en' => $List_Class['Name_class_en'], 'ar' => $List_Class['Name']];
+                $My_Classes->Grade_id = $List_Class['Grade_id'];
+                $My_Classes->save();
+            }
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('Classrooms.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -63,23 +79,25 @@ class ClassroomController extends Controller
     {
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
+    public function update(Request $request)
     {
+        try {
+            $Classrooms = Classroom::findOrFail($request->id);
+            $Classrooms->update([
+                $Classrooms->Name_Class = ['ar' => $request->Name, 'en' => $request->Name_en],
+                $Classrooms->Grade_id = $request->Grade_id,
+            ]);
+            toastr()->success(trans('messages.Update'));
+            return redirect()->route('Classrooms.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $Classrooms = Classroom::findOrFail($request->id)->delete();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->route('Classrooms.index');
     }
 }

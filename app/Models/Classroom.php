@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
@@ -21,6 +22,6 @@ class Classroom extends Model
 
     public function Grades()
     {
-        return $this->belongsTo('Grade', 'Grade_id');
+        return $this->belongsTo('App\Models\Grade', 'Grade_id');
     }
 }
