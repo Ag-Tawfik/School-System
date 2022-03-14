@@ -71,10 +71,9 @@
                                                                         <?php $i++; ?>
                                                                         <td>{{ $i }}</td>
                                                                         <td>{{ $list_Sections->Name_Section }}</td>
-                                                                        <td>{{ $list_Sections->My_classs->Name_Class }}
-                                                                        </td>
+                                                                        <td>{{ $list_Sections->My_class->Name_Class }}  </td>
                                                                         <td>
-                                                                            @if ($list_Sections->Status === 1)
+                                                                            @if ($list_Sections->Status == 1)
                                                                                 <label
                                                                                     class="badge badge-success">{{ trans('Sections_trans.Status_Section_AC') }}</label>
                                                                             @else
@@ -177,8 +176,8 @@
                                                                                             <select name="Class_id"
                                                                                                 class="custom-select">
                                                                                                 <option
-                                                                                                    value="{{ $list_Sections->My_classs->id }}">
-                                                                                                    {{ $list_Sections->My_classs->Name_Class }}
+                                                                                                    value="{{ $list_Sections->My_class->id }}">
+                                                                                                    {{ $list_Sections->My_class->Name_Class }}
                                                                                                 </option>
                                                                                             </select>
                                                                                         </div>
@@ -187,7 +186,7 @@
                                                                                         <div class="col">
                                                                                             <div class="form-check">
 
-                                                                                                @if ($list_Sections->Status === 1)
+                                                                                                @if ($list_Sections->Status == 1)
                                                                                                     <input
                                                                                                         type="checkbox"
                                                                                                         checked
