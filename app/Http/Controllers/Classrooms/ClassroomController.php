@@ -13,11 +13,6 @@ use App\Http\Requests\StoreClassroom;
 class ClassroomController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function index()
     {
         $My_Classes = Classroom::all();
@@ -25,20 +20,10 @@ class ClassroomController extends Controller
         return view('pages.My_Classes.My_Classes', compact('My_Classes', 'Grades'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function create()
     {
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
     public function store(StoreClassroom $request)
     {
 
@@ -59,23 +44,10 @@ class ClassroomController extends Controller
         }
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function show($id)
     {
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function edit($id)
     {
     }
