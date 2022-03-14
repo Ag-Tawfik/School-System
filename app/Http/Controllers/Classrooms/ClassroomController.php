@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Classrooms;
 
-use App\Models\Grade;
+use toastr;
 
+use App\Models\Grade;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -99,5 +100,22 @@ class ClassroomController extends Controller
         $Classrooms = Classroom::findOrFail($request->id)->delete();
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('Classrooms.index');
+    }
+
+    public function delete_all(Request $request)
+    {
+        $delete_all_id = explode(",", $request->delete_all_id);
+
+        Classroom::whereIn('id', $delete_all_id)->Delete();
+        toastr()->error(trans('messages.Delete'));
+        return redirect()->route('Classrooms.index');
+    }
+
+
+    public function Filter_Classes(Request $request)
+    {
+        $Grades = Grade::all();
+        $Search = Classroom::select('*')->where('Grade_id', '=', $request->Grade_id)->get();
+        return view('pages.My_Classes.My_Classes', compact('Grades'))->withDetails($Search);
     }
 }

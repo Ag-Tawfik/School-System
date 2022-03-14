@@ -43,3 +43,20 @@
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/ar/dataTables.bootstrap4.min.js') }}"></script>
 @endif
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#btn_delete_all").click(function() {
+            var selected = new Array();
+            $("#datatable input[type=checkbox]:checked").each(function() {
+                selected.push(this.value);
+            });
+
+            if (selected.length > 0) {
+                $('#delete_all').modal('show')
+                $('input[id="delete_all_id"]').val(selected);
+            }
+        });
+    });
+</script>
