@@ -5,17 +5,12 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        User::factory()->create([
+        User::create([
             'name' => 'Admin',
-            'email' => 'Admin@admin.com',
-            'password' => bcrypt('password'),
+            'email' => 'Admin@Admin.com',
+            'password' => bcrypt('password')
         ]);
     }
 }
