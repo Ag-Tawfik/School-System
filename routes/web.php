@@ -54,5 +54,9 @@ Route::group(
             Route::resource('Sections', 'SectionController');
             Route::get('/classes/{id}', 'SectionController@getclasses');
         });
+
+        //==============================Parents============================
+
+        Route::view('add_parent','livewire.show_Form');
     }
 );

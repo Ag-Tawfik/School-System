@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Nationalite;
+use App\Models\Nationalitie;
 use Faker\Generator as Faker;
 
-$factory->define(Nationalite::class, function (Faker $faker) {
+$factory->define(Nationalitie::class, function (Faker $faker) {
     return [
         //
     ];

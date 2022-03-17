@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Nationalite;
+use App\Models\Nationalitie;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,7 +13,7 @@ class NationalitiesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('nationalites')->delete();
+        DB::table('nationalities')->delete();
 
         $Nationalities = [
 
@@ -1249,7 +1249,7 @@ class NationalitiesTableSeeder extends Seeder
         ];
 
         foreach ($Nationalities as $Nationalitie) {
-            Nationalite::create(['Name' => $Nationalitie]);
+            Nationalitie::create(['Name' => $Nationalitie]);
         }
 
     }

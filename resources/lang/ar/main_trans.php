@@ -16,6 +16,8 @@ return [
     'List_sections' => 'قائمة الاقسام',
     'Teachers' => 'المعلمين',
     'Parents' => 'اولياء الامور',
+    'List_Parents' => 'قائمة اولياء الامور',
+    'Add_Parent' => 'اضافة ولي امر',
     'Accounts' => 'الحسابات',
     'Attendance' => 'الحضور والغياب',
     'Exams' => 'الامتحانات',
