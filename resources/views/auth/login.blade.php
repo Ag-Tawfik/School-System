@@ -46,8 +46,9 @@
                     <div class="col-lg-4 col-md-6 login-fancy-bg bg"
                         style="background-image: url(images/login-inner-bg.jpg);">
                         <div class="login-fancy">
-                            <h3 class="text-white mb-30">Hello Managers</h3>
-                            <p class="mb-20 text-white">Log In To Start Manging Your School With The Sample Way Possible.</p>
+                            <h2 class="text-white mb-20">Hello world!</h2>
+                            <p class="mb-20 text-white">Create tailor-cut websites with the exclusive multi-purpose
+                                responsive template along with powerful features.</p>
                             <ul class="list-unstyled  pos-bot pb-30">
                                 <li class="list-inline-item"><a class="text-white" href="#"> Terms of Use</a> </li>
                                 <li class="list-inline-item"><a class="text-white" href="#"> Privacy Policy</a></li>

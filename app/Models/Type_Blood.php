@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type_Blood extends Model
 {
-    protected $table = ['Name'];
+    protected $fillable=['Name'];
 }

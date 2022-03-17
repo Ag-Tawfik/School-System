@@ -16,8 +16,9 @@ class CreateMyParentsTable extends Migration
         Schema::create('my__parents', function (Blueprint $table) {
             $table->id();
             $table->string('Email')->unique();
-            $table->string('password');
+            $table->string('Password');
 
+            //Fatherinformation
             $table->string('Name_Father');
             $table->string('National_ID_Father');
             $table->string('Passport_ID_Father');
@@ -28,6 +29,7 @@ class CreateMyParentsTable extends Migration
             $table->bigInteger('Religion_Father_id')->unsigned();
             $table->string('Address_Father');
 
+            //Mother information
             $table->string('Name_Mother');
             $table->string('National_ID_Mother');
             $table->string('Passport_ID_Mother');
@@ -38,6 +40,7 @@ class CreateMyParentsTable extends Migration
             $table->bigInteger('Religion_Mother_id')->unsigned();
             $table->string('Address_Mother');
             $table->timestamps();
+
         });
     }
 

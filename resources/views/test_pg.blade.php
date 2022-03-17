@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('css')
-
+    @livewireStyles
 @section('title')
-    {{ trans('main_trans.Add_Parent') }}
+    empty
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    {{ trans('main_trans.Add_Parent') }}
+    empty
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -18,7 +18,11 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <livewire:add-parent />
+
+                <livewire:counter/>
+
+
+
             </div>
         </div>
     </div>
@@ -26,5 +30,5 @@
 <!-- row closed -->
 @endsection
 @section('js')
-@livewireScripts
+    @livewireScripts
 @endsection

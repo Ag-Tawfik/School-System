@@ -26,17 +26,15 @@ class StoreClassroom extends FormRequest
         return [
             'List_Classes.*.Name' => 'required',
             'List_Classes.*.Name_class_en' => 'required',
-            // 'List_Classes.*.Grade_id' => 'required|exists:grades,id',
         ];
     }
+
 
     public function messages()
     {
         return [
             'Name.required' => trans('validation.required'),
-            // 'Name.unique' => trans('validation.unique'),
             'Name_class_en.required' => trans('validation.required'),
-            // 'Name_class_en.unique' => trans('validation.unique'),
         ];
     }
 }

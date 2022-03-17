@@ -9,18 +9,17 @@ class Section extends Model
 {
     use HasTranslations;
     public $translatable = ['Name_Section'];
-    protected $fillable = ['Name_Section', 'Grade_id', 'Class_id'];
+    protected $fillable=['Name_Section','Grade_id','Class_id'];
+
     protected $table = 'sections';
     public $timestamps = true;
 
 
-    public function My_class()
+    // علاقة بين الاقسام والصفوف لجلب اسم الصف في جدول الاقسام
+
+    public function My_classs()
     {
         return $this->belongsTo('App\Models\Classroom', 'Class_id');
     }
 
-    public function Grade()
-    {
-        return $this->belongsTo('App\Models\Grade', 'Grade_id');
-    }
 }

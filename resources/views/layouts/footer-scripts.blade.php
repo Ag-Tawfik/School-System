@@ -3,9 +3,7 @@
 <!-- plugins-jquery -->
 <script src="{{ URL::asset('assets/js/plugins-jquery.js') }}"></script>
 <!-- plugin_path -->
-<script type="text/javascript">
-    var plugin_path = '{{ asset('assets/js') }}/';
-</script>
+<script type="text/javascript">var plugin_path = '{{ asset('assets/js') }}/';</script>
 
 <!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
@@ -33,7 +31,7 @@
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable();
-    });
+    } );
 </script>
 
 
@@ -64,3 +62,4 @@
         }
     }
 </script>
+
