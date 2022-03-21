@@ -4,7 +4,7 @@ use App\Models\Religion;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class religionTableSeeder extends Seeder
+class ReligionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
