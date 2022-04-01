@@ -226,7 +226,7 @@ class AddParent extends Component
     public function delete($id)
     {
         if ($id) {
-            My_Parent::find($id)->
+            My_Parent::find($id)->delete();
         }
         My_Parent::findOrFail($id)->delete();
         return redirect()->to('/add_parent');
