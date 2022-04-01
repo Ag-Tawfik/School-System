@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gender;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 use App\Repository\TeacherRepositoryInterface;
 
@@ -10,30 +12,25 @@ class TeacherController extends Controller
 {
     protected $Teacher;
 
-    // public function __construct(TeacherRepositoryInterface $Teacher)
-    // {
-    //     $this->Teacher = $Teacher;
-    // }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(TeacherRepositoryInterface $Teacher)
     {
-        //$this->Teacher->getAllTeachers();
-        echo "TeacherController";
+        $this->Teacher = $Teacher;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        $Teachers = $this->Teacher->getAllTeachers();
+
+        return view('pages.Teachers.Teachers', compact('Teachers'));
+    }
+
     public function create()
     {
-        //
+        $specializations = $this->Teacher->Getspecialization();
+
+        $genders = $this->Teacher->GetGender();
+
+        return view('pages.Teachers.create', compact('specializations', 'genders'));
     }
 
     /**
@@ -44,7 +41,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->Teacher->StoreTeachers($request);
     }
 
     /**

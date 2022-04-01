@@ -20,19 +20,20 @@ class TeacherFactory extends Factory
         ];
     }
 
-// /** @var \Illuminate\Database\Eloquent\Factory $factory */
+    // /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-// use App\Models\Teacher;
-// use Faker\Generator as Faker;
+    // use App\Models\Teacher;
+    // use Faker\Generator as Faker;
 
-// $factory->define(Teacher::class, function (Faker $faker) {
-//     return [
-//         'Name' => $faker->name,
-//         'Email' => $faker->unique()->safeEmail,
-//         'Password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-//         'Specialization_id' => 1,
-//         'Gender_id' => 1,
-//         'Joining_Date' => $faker->date(),
-//         'Address' => $faker->address
-//     ];
-// });
+    // $factory->define(Teacher::class, function (Faker $faker) {
+    //     return [
+    //         'Name' => $faker->name,
+    //         'Email' => $faker->unique()->safeEmail,
+    //         'Password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+    //         'Specialization_id' => 1,
+    //         'Gender_id' => 1,
+    //         'Joining_Date' => $faker->date(),
+    //         'Address' => $faker->address
+    //     ];
+    // });
+}
