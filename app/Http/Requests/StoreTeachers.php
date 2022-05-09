@@ -24,10 +24,10 @@ class StoreTeachers extends FormRequest
     public function rules()
     {
         return [
-            'Email' => 'required|Email|unique:teachers,' . $this->id,
-            'Password' => 'required|min:6',
-            'Name_en' => 'required',
+            'Email' => 'required|unique:teachers,Email,' . $this->id,
+            'Password' => 'required',
             'Name_ar' => 'required',
+            'Name_en' => 'required',
             'Specialization_id' => 'required',
             'Gender_id' => 'required',
             'Joining_Date' => 'required|date|date_format:Y-m-d',
