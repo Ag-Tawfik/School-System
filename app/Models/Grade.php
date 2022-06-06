@@ -3,21 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
 class Grade extends Model
 {
-    use HasTranslations;
 
+    use HasTranslations;
     public $translatable = ['Name'];
 
-    protected $fillable = ['Name', 'Notes'];
-
+    protected $fillable=['Name','Notes'];
     protected $table = 'Grades';
+    public $timestamps = true;
 
-    public function Sections(): HasMany
+    // علاقة المراحل الدراسية لجلب الاقسام المتعلقة بكل مرحلة
+
+    public function Sections()
     {
-        return $this->hasMany(Section::class, 'Grade_id');
+        return $this->hasMany('App\Models\Section', 'Grade_id');
     }
+
 }

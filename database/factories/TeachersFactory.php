@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Teacher;
+use App\Models\Gender;
+use App\Models\Specialization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TeacherFactory extends Factory
@@ -10,30 +11,13 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            'Name' => $faker->name,
-            'Email' => $faker->unique()->safeEmail,
-            'Password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'Specialization_id' => 1,
-            'Gender_id' => 1,
-            'Joining_Date' => $faker->date(),
-            'Address' => $faker->address
+            'Name' => $this->faker->name,
+            'Email' => $this->faker->unique()->safeEmail,
+            'Password' => bcrypt('password'),
+            'Specialization_id' => randomOrCreateFactory(Specialization::class),
+            'Gender_id' => randomOrCreateFactory(Gender::class),
+            'Joining_Date' => $this->faker->date(),
+            'Address' => $this->faker->address
         ];
     }
-
-    // /** @var \Illuminate\Database\Eloquent\Factory $factory */
-
-    // use App\Models\Teacher;
-    // use Faker\Generator as Faker;
-
-    // $factory->define(Teacher::class, function (Faker $faker) {
-    //     return [
-    //         'Name' => $faker->name,
-    //         'Email' => $faker->unique()->safeEmail,
-    //         'Password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-    //         'Specialization_id' => 1,
-    //         'Gender_id' => 1,
-    //         'Joining_Date' => $faker->date(),
-    //         'Address' => $faker->address
-    //     ];
-    // });
 }

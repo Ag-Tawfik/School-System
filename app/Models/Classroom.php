@@ -3,21 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Translatable\HasTranslations;
 
 class Classroom extends Model
 {
-    use HasTranslations;
 
+    use HasTranslations;
     public $translatable = ['Name_Class'];
 
+
     protected $table = 'Classrooms';
+    public $timestamps = true;
+    protected $fillable=['Name_Class','Grade_id'];
 
-    protected $fillable = ['Name_Class', 'Grade_id'];
 
-    public function Grades(): BelongsTo
+    // علاقة بين الصفوف المراحل الدراسية لجلب اسم المرحلة في جدول الصفوف
+
+    public function Grades()
     {
-        return $this->belongsTo(Grade::class, 'Grade_id');
+        return $this->belongsTo('App\Models\Grade', 'Grade_id');
     }
+
 }

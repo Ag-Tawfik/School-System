@@ -2,8 +2,8 @@
 
 namespace App\Repository;
 
-interface TeacherRepositoryInterface
-{
+interface TeacherRepositoryInterface{
+
     // get all Teachers
     public function getAllTeachers();
 
@@ -24,4 +24,7 @@ interface TeacherRepositoryInterface
 
     // DeleteTeachers
     public function DeleteTeachers($request);
+
 }
+
+
