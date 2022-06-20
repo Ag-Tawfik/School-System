@@ -7,8 +7,11 @@ use Spatie\Translatable\HasTranslations;
 
 class Teacher extends Model
 {
+
     use HasTranslations;
+
     public $translatable = ['Name'];
+    
     protected $guarded=[];
 
     // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
