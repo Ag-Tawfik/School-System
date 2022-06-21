@@ -22,7 +22,14 @@ return [
     'Processes' => 'Processes',
     'submit' => 'Submit',
     'Close' => 'Close',
-    'Deleted_Student' => 'Delete Student Data',
-    'Deleted_Student_tilte' => 'Are you sure to delete the student ?',
-
+    'Attachments' => 'Attachments',
+    'Student_details' => 'Student Details',
+    'Deleted_Student' => 'Delete All student data',
+    'Deleted_Student_tilte' => 'Are you sure About deleting the student ?',
+    'Delete_attachment' => 'Delete Attachment',
+    'Delete_attachment_tilte' => 'Are you sure to delete the attachment?',
+    'filename' => 'File Name',
+    'created_at' => 'Created At',
+    'Download' => 'Download',
+    'delete' => 'Delete',
 ];

@@ -22,7 +22,14 @@ return [
     'Processes' => 'العمليات',
     'submit' => 'تاكيد',
     'Close' => 'اغلاق',
+    'Attachments' => 'المرفقات',
+    'Student_details' => 'معلومات الطالب',
     'Deleted_Student' => 'حذف بيانات الطالب',
     'Deleted_Student_tilte' => 'هل انت متأكد من حذف الطالب ؟',
-
+    'Delete_attachment' => 'حذف مرفق',
+    'Delete_attachment_tilte' => 'هل انت متأكد من حذف المرفق ؟',
+    'filename' => 'اسم الملف',
+    'created_at' => 'تاريخ الاضافة',
+    'Download' => 'تحميل',
+    'delete' => 'حذف',
 ];
