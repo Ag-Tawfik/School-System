@@ -7,6 +7,9 @@ interface StudentRepositoryInterface
     // Get Students
     public function Get_Students();
 
+    // Show_Student
+    public function Show_Student($id);
+
     // Add Student
     public function Create_Student();
 
@@ -28,4 +31,11 @@ interface StudentRepositoryInterface
     // Store Student
     public function Store_Student($request);
 
+    public function Upload_attachment($request);
+
+    //Download_attachment
+    public function Download_attachment($studentsname,$filename);
+
+    //Delete_attachment
+    public function Delete_attachment($request);
 }
