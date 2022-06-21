@@ -11,8 +11,8 @@ class Teacher extends Model
     use HasTranslations;
 
     public $translatable = ['Name'];
-    
-    protected $guarded=[];
+
+    protected $guarded = [];
 
     // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
     public function specializations()
@@ -29,8 +29,6 @@ class Teacher extends Model
 // علاقة المعلمين مع الاقسام
     public function Sections()
     {
-        return $this->belongsToMany('App\Models\Section','teacher_section');
+        return $this->belongsToMany('App\Models\Section', 'teacher_section');
     }
-
-
 }
