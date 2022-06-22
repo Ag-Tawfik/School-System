@@ -16,8 +16,8 @@ class SectionTableSeeder extends Seeder
         for ($i = 0; $i < $numbers; $i++) {
             Section::create([
                 'Name_Section' => [
-                    'en' => $fakerEn->name,
-                    'ar' => $fakerAr->name,
+                    'en' => $fakerEn->unique()->randomElement(['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5']),
+                    'ar' => $fakerAr->unique()->randomElement(['القسم الاول', 'القسم الثاني', 'القسم الثالث', 'القسم الرابع', 'القسم الخامس']),
                 ],
                 'Status' => $fakerEn->boolean(),
                 'Grade_id' => Grade::all()->random()->id,

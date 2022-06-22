@@ -14,10 +14,10 @@ class GradeTableSeeder extends Seeder
         for ($i = 0; $i < $numbers; $i++) {
             Grade::create([
                 'Name' => [
-                    'en' => $fakerEn->word,
-                    'ar' => $fakerAr->word,
+                    'en' => $fakerEn->unique()->randomElement(['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5']),
+                    'ar' => $fakerAr->unique()->randomElement(['المرحلة 1', 'المرحلة 2', 'المرحلة 3', 'المرحلة 4', 'المرحلة 5']),
                 ],
-                'Notes' => $fakerEn->text,
+                'Notes' => $fakerEn->paragraph(1),
             ]);
         }
     }
