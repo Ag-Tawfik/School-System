@@ -18,11 +18,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Auth::routes();
 
 Route::group(['middleware' => ['guest']], function () {
-
     Route::get('/', function () {
         return view('auth.login');
     });
-
 });
 
 //==============================Translate all pages============================
@@ -34,7 +32,6 @@ Route::group(
 
         //==============================dashboard============================
         Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
         //==============================dashboard============================
         Route::group(['namespace' => 'Grades'], function () {
             Route::resource('Grades', 'GradeController');
@@ -44,7 +41,6 @@ Route::group(
         Route::group(['namespace' => 'Classrooms'], function () {
             Route::resource('Classrooms', 'ClassroomController');
             Route::post('delete_all', 'ClassroomController@delete_all')->name('delete_all');
-
             Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
 
         });
@@ -52,11 +48,8 @@ Route::group(
         //==============================Sections============================
 
         Route::group(['namespace' => 'Sections'], function () {
-
             Route::resource('Sections', 'SectionController');
-
             Route::get('/classes/{id}', 'SectionController@getclasses');
-
         });
 
         //==============================parents============================
@@ -78,4 +71,10 @@ Route::group(
             Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
             Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
         });
+
+        //==============================Promotion Students ============================
+        Route::group(['namespace' => 'Students'], function () {
+            Route::resource('Promotion', 'PromotionController');
+        });
+
     });
