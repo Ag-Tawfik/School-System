@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Grade;
-use App\Models\promotion;
+use App\Models\Promotion;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 
