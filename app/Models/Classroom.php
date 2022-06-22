@@ -13,8 +13,6 @@ class Classroom extends Model
 
     public $translatable = ['Name_Class'];
 
-    protected $table = 'Classrooms';
-
     protected $fillable = [
         'Name_Class',
         'Grade_id',
