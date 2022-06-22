@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
+use App\Models\Classroom;
+use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\Image;
-use App\Models\Gender;
+use App\Models\My_Parent;
+use App\Models\Nationalitie;
 use App\Models\Section;
 use App\Models\Student;
-use App\Models\Classroom;
-use App\Models\My_Parent;
 use App\Models\Type_Blood;
-use App\Models\Nationalitie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -61,35 +61,29 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Create_Student()
     {
-
         $data['my_classes'] = Grade::all();
         $data['parents'] = My_Parent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = Type_Blood::all();
         return view('pages.Students.add', $data);
-
     }
 
     public function Get_classrooms($id)
     {
-
         $list_classes = Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
         return $list_classes;
-
     }
 
     //Get Sections
     public function Get_Sections($id)
     {
-
         $list_sections = Section::where("Class_id", $id)->pluck("Name_Section", "id");
         return $list_sections;
     }
 
     public function Store_Student($request)
     {
-
         DB::beginTransaction();
 
         try {
@@ -171,7 +165,6 @@ class StudentRepository implements StudentRepositoryInterface
     {
         // Delete img in server disk
         Storage::disk('upload_attachments')->delete('attachments/students/' . $request->student_name . '/' . $request->filename);
-
         // Delete in data
         image::where('id', $request->id)->where('filename', $request->filename)->delete();
         toastr()->error(trans('messages.Delete'));

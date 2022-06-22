@@ -34,7 +34,7 @@ interface StudentRepositoryInterface
     public function Upload_attachment($request);
 
     //Download_attachment
-    public function Download_attachment($studentsname,$filename);
+    public function Download_attachment($studentsname, $filename);
 
     //Delete_attachment
     public function Delete_attachment($request);

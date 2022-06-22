@@ -27,7 +27,6 @@ class TeacherRepository implements TeacherRepositoryInterface
 
     public function StoreTeachers($request)
     {
-
         try {
             $Teachers = new Teacher();
             $Teachers->Email = $request->Email;
@@ -43,7 +42,6 @@ class TeacherRepository implements TeacherRepositoryInterface
         } catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-
     }
 
     public function editTeachers($id)
@@ -76,5 +74,4 @@ class TeacherRepository implements TeacherRepositoryInterface
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('Teachers.index');
     }
-
 }

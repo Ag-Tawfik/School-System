@@ -24,12 +24,12 @@ class StoreSections extends FormRequest
     public function rules()
     {
         return [
-            
+
             'Name_Section_Ar' => 'required',
             'Name_Section_En' => 'required',
             'Grade_id' => 'required',
             'Class_id' => 'required',
-           
+
         ];
     }
 
