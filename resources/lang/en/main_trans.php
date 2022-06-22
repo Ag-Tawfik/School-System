@@ -1,12 +1,11 @@
 <?php
 
 return [
-
     'Dashboard' => 'Dashboard',
     'Dashboard_page' => 'Dashboard',
     'Main_title' => 'School Management Program',
     'Programname' => 'School Management Program',
-    'change_language' => 'language',
+    'change_language' => 'Language',
     'Grades' => 'Grades',
     'Grades_list' => 'Grades List',
     'classes' => 'Classes',
@@ -15,7 +14,7 @@ return [
     'List_sections' => 'Sections List',
     'students' => 'Students',
     'add_student' => 'Add Student',
-    'list_students' => 'List Students',
+    'list_students' => 'Students List',
     'Students_Promotions' => 'Students Promotions',
     'information_student' => 'Information Students',
     'Students_upgrade' => 'Students Upgrade',
@@ -29,10 +28,9 @@ return [
     'Attendance' => 'Attendance',
     'Exams' => 'Exams',
     'library' => 'Library',
-    'Onlineclasses' => 'Online classes',
+    'Onlineclasses' => 'Online Classes',
     'Settings' => 'Settings',
     'Users' => 'Users',
     'Copyright' => 'Copyright',
     'Name_Programer' => 'The Developer',
-
 ];
