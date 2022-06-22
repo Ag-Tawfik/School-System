@@ -63,7 +63,7 @@
                         <tr>
                             <th><input name="select_all" id="example-select-all" type="checkbox" onclick="CheckAll('box1', this)" /></th>
                             <th>#</th>
-                            <th>{{ trans('My_Classes_trans.Name_class') }}</th>
+                            <th>{{ trans('My_Classes_trans.Name_class_en') }}</th>
                             <th>{{ trans('My_Classes_trans.Name_Grade') }}</th>
                             <th>{{ trans('My_Classes_trans.Processes') }}</th>
                         </tr>
