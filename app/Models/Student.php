@@ -3,57 +3,52 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\morphMany;
 use Spatie\Translatable\HasTranslations;
 
 class Student extends Model
 {
     use HasTranslations;
-    public $translatable = ['name'];
+
+    public $translatable = [
+        'name',
+    ];
+
     protected $guarded = [];
 
-    // علاقة بين الطلاب والانواع جنس اسم النوع في جدول الطلاب
-
-    public function gender()
+    public function gender(): belongsTo
     {
         return $this->belongsTo(Gender::class);
     }
 
-    // علاقة بين الطلاب والمراحل الدراسية لجلب اسم المرحلة في جدول الطلاب
-
-    public function grade()
+    public function grade(): belongsTo
     {
-        return $this->belongsTo('App\Models\Grade', 'Grade_id');
-        //return $this->belongsTo(Grade::class);
+        return $this->belongsTo(Grade::class);
     }
 
-    // علاقة بين الطلاب الصفوف الدراسية لجلب اسم الصف في جدول الطلاب
-
-    public function classroom()
+    public function classroom(): belongsTo
     {
-        return $this->belongsTo('App\Models\Classroom', 'Classroom_id');
-        //return $this->belongsTo(Classroom::class);
+        return $this->belongsTo(Classroom::class);
     }
 
-    // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
-
-    public function section()
+    public function section(): belongsTo
     {
-        return $this->belongsTo('App\Models\Section', 'section_id');
-        //return $this->belongsTo(Section::class);
+        return $this->belongsTo(Section::class, 'section_id');
     }
 
-    public function images()
+    public function images(): morphMany
     {
         return $this->morphMany(Image::class, 'imageable');
     }
 
-    public function Nationality()
+    public function Nationality(): belongsTo
     {
-        return $this->belongsTo('App\Models\Nationalitie', 'nationalitie_id');
+        return $this->belongsTo(Nationalitie::class, 'nationalitie_id');
     }
 
-    public function myparent()
+    public function myparent(): belongsTo
     {
-        return $this->belongsTo('App\Models\My_Parent', 'parent_id');
+        return $this->belongsTo(My_Parent::class, 'parent_id');
     }
 }

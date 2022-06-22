@@ -8,7 +8,12 @@ use Spatie\Translatable\HasTranslations;
 class Nationalitie extends Model
 {
     use HasTranslations;
-    public $translatable = ['Name'];
-    protected $fillable =['Name'];
-    //protected $guarded =[];
+
+    public $translatable = [
+        'Name',
+    ];
+
+    protected $fillable = [
+        'Name',
+    ];
 }

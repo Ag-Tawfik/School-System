@@ -3,32 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
 use Spatie\Translatable\HasTranslations;
 
 class Teacher extends Model
 {
-
     use HasTranslations;
 
-    public $translatable = ['Name'];
+    public $translatable = [
+        'Name',
+    ];
 
     protected $guarded = [];
 
-    // علاقة بين المعلمين والتخصصات لجلب اسم التخصص
-    public function specializations()
+    public function specializations(): belongsTo
     {
-        return $this->belongsTo('App\Models\Specialization', 'Specialization_id');
+        return $this->belongsTo(Specialization::class, 'Specialization_id');
     }
 
-    // علاقة بين المعلمين والانواع لجلب جنس المعلم
-    public function genders()
+    public function genders(): belongsTo
     {
-        return $this->belongsTo('App\Models\Gender', 'Gender_id');
+        return $this->belongsTo(Gender::class, 'Gender_id');
     }
 
-// علاقة المعلمين مع الاقسام
-    public function Sections()
+    public function Sections(): belongsToMany
     {
-        return $this->belongsToMany('App\Models\Section', 'teacher_section');
+        return $this->belongsToMany(Section::class, 'teacher_section');
     }
 }

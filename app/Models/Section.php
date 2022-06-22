@@ -3,29 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
 use Spatie\Translatable\HasTranslations;
 
 class Section extends Model
 {
     use HasTranslations;
-    public $translatable = ['Name_Section'];
-    protected $fillable=['Name_Section','Grade_id','Class_id'];
 
-    protected $table = 'sections';
-    public $timestamps = true;
+    public $translatable = [
+        'Name_Section',
+    ];
 
+    protected $fillable = [
+        'Name_Section',
+        'Grade_id',
+        'Class_id',
+    ];
 
-    // علاقة بين الاقسام والصفوف لجلب اسم الصف في جدول الاقسام
-
-    public function My_classs()
+    public function My_classs(): belongsTo
     {
-        return $this->belongsTo('App\Models\Classroom', 'Class_id');
+        return $this->belongsTo(Classroom::class, 'Class_id');
     }
 
-    // علاقة الاقسام مع المعلمين
-    public function teachers()
+    public function teachers(): belongsToMany
     {
-        return $this->belongsToMany('App\Models\Teacher','teacher_section');
+        return $this->belongsToMany(Teacher::class, 'teacher_section');
     }
 
 }
