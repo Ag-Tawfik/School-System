@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\My_Parent;
+use App\Models\TheParent;
 use App\Models\Nationalitie;
 use App\Models\Religion;
 use App\Models\Type_Blood;
@@ -16,7 +16,7 @@ class ParentTableSeeder extends Seeder
         $numbers = 5;
 
         for ($i = 0; $i < $numbers; $i++) {
-            My_Parent::create([
+            TheParent::create([
                 'email' => $fakerEn->unique()->safeEmail,
                 'password' => bcrypt('password'),
                 'Name_Father' => [

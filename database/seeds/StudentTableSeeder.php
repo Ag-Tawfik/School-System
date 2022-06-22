@@ -5,7 +5,7 @@ use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
-use App\Models\My_Parent;
+use App\Models\TheParent;
 use App\Models\Type_Blood;
 use App\Models\Nationalitie;
 use Illuminate\Database\Seeder;
@@ -33,7 +33,7 @@ class StudentTableSeeder extends Seeder
                 'Grade_id' => Grade::all()->random()->id,
                 'Classroom_id' => Classroom::all()->random()->id,
                 'section_id' => Section::all()->random()->id,
-                'parent_id' => My_Parent::all()->random()->id,
+                'parent_id' => TheParent::all()->random()->id,
                 'academic_year' => $fakerEn->year,
             ]);
         }

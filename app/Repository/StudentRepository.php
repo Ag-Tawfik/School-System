@@ -6,7 +6,7 @@ use App\Models\Classroom;
 use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\Image;
-use App\Models\My_Parent;
+use App\Models\TheParent;
 use App\Models\Nationalitie;
 use App\Models\Section;
 use App\Models\Student;
@@ -27,7 +27,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function Edit_Student($id)
     {
         $data['Grades'] = Grade::all();
-        $data['parents'] = My_Parent::all();
+        $data['parents'] = TheParent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = Type_Blood::all();
@@ -62,7 +62,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function Create_Student()
     {
         $data['my_classes'] = Grade::all();
-        $data['parents'] = My_Parent::all();
+        $data['parents'] = TheParent::all();
         $data['Genders'] = Gender::all();
         $data['nationals'] = Nationalitie::all();
         $data['bloods'] = Type_Blood::all();

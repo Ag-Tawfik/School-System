@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class My_Parent extends Model
+class TheParent extends Model
 {
     use HasTranslations;
 

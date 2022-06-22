@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Teachers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTeachers;
-use App\Models\Teacher;
 use App\Repository\TeacherRepositoryInterface;
 use Illuminate\Http\Request;
 

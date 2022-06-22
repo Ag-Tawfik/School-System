@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Models\Gender;
-use App\Models\Specialization;
 use App\Models\Teacher;
+use App\Models\Specialization;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherRepository implements TeacherRepositoryInterface
@@ -39,7 +39,7 @@ class TeacherRepository implements TeacherRepositoryInterface
             $Teachers->save();
             toastr()->success(trans('messages.success'));
             return redirect()->route('Teachers.create');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
@@ -63,7 +63,7 @@ class TeacherRepository implements TeacherRepositoryInterface
             $Teachers->save();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Teachers.index');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
