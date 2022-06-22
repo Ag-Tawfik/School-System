@@ -24,9 +24,9 @@ class CreateMyParentsTable extends Migration
             $table->string('Passport_ID_Father');
             $table->string('Phone_Father');
             $table->string('Job_Father');
-            $table->bigInteger('Nationality_Father_id')->unsigned();
-            $table->bigInteger('Blood_Type_Father_id')->unsigned();
-            $table->bigInteger('Religion_Father_id')->unsigned();
+            $table->foreignId('Nationality_Father_id')->constrained('nationalities')->onDelete('cascade');
+            $table->foreignId('Blood_Type_Father_id')->constrained('type__bloods')->onDelete('cascade');
+            $table->foreignId('Religion_Father_id')->constrained('religions')->onDelete('cascade');
             $table->string('Address_Father');
 
             //Mother information
@@ -35,9 +35,9 @@ class CreateMyParentsTable extends Migration
             $table->string('Passport_ID_Mother');
             $table->string('Phone_Mother');
             $table->string('Job_Mother');
-            $table->bigInteger('Nationality_Mother_id')->unsigned();
-            $table->bigInteger('Blood_Type_Mother_id')->unsigned();
-            $table->bigInteger('Religion_Mother_id')->unsigned();
+            $table->foreignId('Nationality_Mother_id')->constrained('nationalities')->onDelete('cascade');
+            $table->foreignId('Blood_Type_Mother_id')->constrained('type__bloods')->onDelete('cascade');
+            $table->foreignId('Religion_Mother_id')->constrained('religions')->onDelete('cascade');
             $table->string('Address_Mother');
             $table->timestamps();
 

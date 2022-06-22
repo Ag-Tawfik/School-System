@@ -18,10 +18,8 @@ class CreateTeachersTable extends Migration
             $table->string('Email')->unique();
             $table->string('Password');
             $table->string('Name');
-            $table->bigInteger('Specialization_id')->unsigned();
-            $table->foreign('Specialization_id')->references('id')->on('specializations')->onDelete('cascade');
-            $table->bigInteger('Gender_id')->unsigned();
-            $table->foreign('Gender_id')->references('id')->on('genders')->onDelete('cascade');
+            $table->foreignId('Specialization_id')->constrained('specializations')->onDelete('cascade');
+            $table->foreignId('Gender_id')->constrained('genders')->onDelete('cascade');
             $table->date('Joining_Date');
             $table->text('Address');
             $table->timestamps();
