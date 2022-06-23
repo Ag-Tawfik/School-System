@@ -3,13 +3,13 @@
 use App\Models\TheParent;
 use App\Models\Nationalitie;
 use App\Models\Religion;
-use App\Models\Type_Blood;
+use App\Models\BloodType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 class ParentTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $fakerAr = Faker\Factory::create( 'ar_SA' );
         $fakerEn = Faker\Factory::create( 'en_US' );
@@ -31,7 +31,7 @@ class ParentTableSeeder extends Seeder
                     'ar' => $fakerAr->jobTitle,
                 ],
                 'Nationality_Father_id' => Nationalitie::all()->random()->id,
-                'Blood_Type_Father_id' => Type_Blood::all()->random()->id,
+                'Blood_Type_Father_id' => BloodType::all()->random()->id,
                 'Religion_Father_id' => Religion::all()->random()->id,
                 'Address_Father' => $fakerEn->address,
 
@@ -47,7 +47,7 @@ class ParentTableSeeder extends Seeder
                     'ar' => $fakerAr->jobTitle,
                 ],
                 'Nationality_Mother_id' => Nationalitie::all()->random()->id,
-                'Blood_Type_Mother_id' => Type_Blood::all()->random()->id,
+                'Blood_Type_Mother_id' => BloodType::all()->random()->id,
                 'Religion_Mother_id' => Religion::all()->random()->id,
                 'Address_Mother' => $fakerEn->address,
             ]);

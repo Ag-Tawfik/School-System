@@ -6,7 +6,7 @@ use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\TheParent;
-use App\Models\Type_Blood;
+use App\Models\BloodType;
 use App\Models\Nationalitie;
 use Illuminate\Database\Seeder;
 
@@ -28,7 +28,7 @@ class StudentTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'gender_id' => Gender::all()->random()->id,
                 'nationalitie_id' => Nationalitie::all()->random()->id,
-                'blood_id' => Type_Blood::all()->random()->id,
+                'blood_id' => BloodType::all()->random()->id,
                 'Date_Birth' => $fakerEn->date,
                 'Grade_id' => Grade::all()->random()->id,
                 'Classroom_id' => Classroom::all()->random()->id,

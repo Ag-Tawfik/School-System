@@ -6,7 +6,7 @@ use App\Models\TheParent;
 use App\Models\Nationalitie;
 use App\Models\ParentAttachment;
 use App\Models\Religion;
-use App\Models\Type_Blood;
+use App\Models\BloodType;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -53,7 +53,7 @@ class AddParent extends Component
     {
         return view('livewire.add-parent', [
             'Nationalities' => Nationalitie::all(),
-            'Type_Bloods' => Type_Blood::all(),
+            'Type_Bloods' => BloodType::all(),
             'Religions' => Religion::all(),
             'my_parents' => TheParent::all(),
         ]);

@@ -25,7 +25,7 @@ class CreateTheParentsTable extends Migration
             $table->string('Phone_Father');
             $table->string('Job_Father');
             $table->foreignId('Nationality_Father_id')->constrained('nationalities')->onDelete('cascade');
-            $table->foreignId('Blood_Type_Father_id')->constrained('type__bloods')->onDelete('cascade');
+            $table->foreignId('Blood_Type_Father_id')->constrained('blood_types')->onDelete('cascade');
             $table->foreignId('Religion_Father_id')->constrained('religions')->onDelete('cascade');
             $table->string('Address_Father');
 
@@ -36,7 +36,7 @@ class CreateTheParentsTable extends Migration
             $table->string('Phone_Mother');
             $table->string('Job_Mother');
             $table->foreignId('Nationality_Mother_id')->constrained('nationalities')->onDelete('cascade');
-            $table->foreignId('Blood_Type_Mother_id')->constrained('type__bloods')->onDelete('cascade');
+            $table->foreignId('Blood_Type_Mother_id')->constrained('blood_types')->onDelete('cascade');
             $table->foreignId('Religion_Mother_id')->constrained('religions')->onDelete('cascade');
             $table->string('Address_Mother');
             $table->timestamps();

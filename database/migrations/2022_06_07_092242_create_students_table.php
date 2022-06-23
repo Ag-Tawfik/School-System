@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('password');
             $table->foreignId('gender_id')->constrained('genders')->onDelete('cascade');
             $table->foreignId('nationalitie_id')->constrained('nationalities')->onDelete('cascade');
-            $table->foreignId('blood_id')->constrained('type__bloods')->onDelete('cascade');
+            $table->foreignId('blood_id')->constrained('blood_types')->onDelete('cascade');
             $table->date('Date_Birth');
             $table->foreignId('Grade_id')->constrained('Grades')->onDelete('cascade');
             $table->foreignId('Classroom_id')->constrained('Classrooms')->onDelete('cascade');

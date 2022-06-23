@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Type_Blood;
+use App\Models\BloodType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -11,14 +11,14 @@ class BloodTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        DB::table('type__bloods')->delete();
+        DB::table('blood_types')->delete();
 
         $bgs = ['O-', 'O+', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'];
 
         foreach($bgs as  $bg){
-            Type_Blood::create(['Name' => $bg]);
+            BloodType::create(['Name' => $bg]);
         }
     }
 }
