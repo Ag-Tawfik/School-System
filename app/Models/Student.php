@@ -44,11 +44,11 @@ class Student extends Model
 
     public function Nationality(): belongsTo
     {
-        return $this->belongsTo(Nationalitie::class);
+        return $this->belongsTo(Nationalitie::class, 'nationalitie_id');
     }
 
     public function theparent(): belongsTo
     {
-        return $this->belongsTo(TheParent::class);
+        return $this->belongsTo(TheParent::class, 'parent_id');
     }
 }
