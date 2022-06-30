@@ -17,7 +17,7 @@ class Section extends Model
 
     protected $fillable = [
         'Name_Section',
-        'Grade_id',
+        'grade_id',
         'Class_id',
     ];
 

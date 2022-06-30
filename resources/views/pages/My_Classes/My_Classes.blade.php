@@ -45,7 +45,7 @@
 
                 <form action="{{ route('Filter_Classes') }}" method="POST">
                     {{ csrf_field() }}
-                    <select class="selectpicker" data-style="btn-info" name="Grade_id" required
+                    <select class="selectpicker" data-style="btn-info" name="grade_id" required
                             onchange="this.form.submit()">
                         <option value="" selected disabled>{{ trans('My_Classes_trans.Search_By_Grade') }}</option>
                         @foreach ($Grades as $Grade)
@@ -144,7 +144,7 @@
                                                         for="exampleFormControlTextarea1">{{ trans('My_Classes_trans.Name_Grade') }}
                                                         :</label>
                                                     <select class="form-control form-control-lg"
-                                                            id="exampleFormControlSelect1" name="Grade_id">
+                                                            id="exampleFormControlSelect1" name="grade_id">
                                                         <option value="{{ $My_Class->Grades->id }}">
                                                             {{ $My_Class->Grades->Name }}
                                                         </option>
@@ -259,7 +259,7 @@
                                                 :</label>
 
                                             <div class="box">
-                                                <select class="fancyselect" name="Grade_id">
+                                                <select class="fancyselect" name="grade_id">
                                                     @foreach ($Grades as $Grade)
                                                         <option value="{{ $Grade->id }}">{{ $Grade->Name }}</option>
                                                     @endforeach

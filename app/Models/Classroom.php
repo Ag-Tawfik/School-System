@@ -15,11 +15,11 @@ class Classroom extends Model
 
     protected $fillable = [
         'Name_Class',
-        'Grade_id',
+        'grade_id',
     ];
 
     public function Grades(): BelongsTo
     {
-        return $this->belongsTo(Grade::class, 'Grade_id');
+        return $this->belongsTo(Grade::class, 'grade_id');
     }
 }

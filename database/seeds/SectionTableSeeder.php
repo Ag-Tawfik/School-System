@@ -20,7 +20,7 @@ class SectionTableSeeder extends Seeder
                     'ar' => $fakerAr->unique()->randomElement(['القسم الاول', 'القسم الثاني', 'القسم الثالث', 'القسم الرابع', 'القسم الخامس']),
                 ],
                 'Status' => $fakerEn->boolean(),
-                'Grade_id' => Grade::all()->random()->id,
+                'grade_id' => Grade::all()->random()->id,
                 'Class_id' => Classroom::all()->random()->id,
             ]);
         }

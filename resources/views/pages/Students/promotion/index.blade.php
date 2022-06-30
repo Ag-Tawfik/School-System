@@ -29,14 +29,14 @@
                         </div>
                     @endif
 
-                        <h6 style="color: red;font-family: Cairo">المرحلة الدراسية القديمة</h6><br>
+                        <h6 style="color: red;font-family: Cairo">{{trans('Students_trans.Old_academic_grade')}}</h6><br>
 
                     <form method="post" action="{{ route('Promotion.store') }}">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="inputState">{{trans('Students_trans.Grade')}}</label>
-                                <select class="custom-select mr-sm-2" name="Grade_id" required>
+                                <select class="custom-select mr-sm-2" name="grade_id" required>
                                     <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                     @foreach($Grades as $Grade)
                                         <option value="{{$Grade->id}}">{{$Grade->Name}}</option>
@@ -58,12 +58,12 @@
                                 </select>
                             </div>
                         </div>
-                        <br><h6 style="color: red;font-family: Cairo">المرحلة الدراسية الجديدة</h6><br>
+                        <br><h6 style="color: red;font-family: Cairo">{{trans('Students_trans.New_academic_grade')}}</h6><br>
 
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="inputState">{{trans('Students_trans.Grade')}}</label>
-                                <select class="custom-select mr-sm-2" name="Grade_id_new" >
+                                <select class="custom-select mr-sm-2" name="grade_id_new" >
                                     <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                     @foreach($Grades as $Grade)
                                         <option value="{{$Grade->id}}">{{$Grade->Name}}</option>

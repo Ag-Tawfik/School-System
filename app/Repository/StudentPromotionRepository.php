@@ -20,7 +20,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         DB::beginTransaction();
 
         try {
-            $students = student::where('Grade_id', $request->Grade_id)->where('Classroom_id', $request->Classroom_id)->where('section_id', $request->section_id)->get();
+            $students = student::where('grade_id', $request->grade_id)->where('Classroom_id', $request->Classroom_id)->where('section_id', $request->section_id)->get();
             if ($students->count() < 1) {
                 return redirect()->back()->with('error_promotions', __('لاتوجد بيانات في جدول الطلاب'));
             }
@@ -29,17 +29,17 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 $ids = explode(',', $student->id);
                 student::whereIn('id', $ids)
                     ->update([
-                        'Grade_id' => $request->Grade_id_new,
+                        'grade_id' => $request->grade_id_new,
                         'Classroom_id' => $request->Classroom_id_new,
                         'section_id' => $request->section_id_new,
                     ]);
                 // insert in to promotions
                 Promotion::updateOrCreate([
                     'student_id' => $student->id,
-                    'from_grade' => $request->Grade_id,
+                    'from_grade' => $request->grade_id,
                     'from_Classroom' => $request->Classroom_id,
                     'from_section' => $request->section_id,
-                    'to_grade' => $request->Grade_id_new,
+                    'to_grade' => $request->grade_id_new,
                     'to_Classroom' => $request->Classroom_id_new,
                     'to_section' => $request->section_id_new,
                 ]);

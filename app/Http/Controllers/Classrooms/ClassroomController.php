@@ -25,7 +25,7 @@ class ClassroomController extends Controller
             foreach ($List_Classes as $List_Class) {
                 $My_Classes = new Classroom();
                 $My_Classes->Name_Class = ['en' => $List_Class['Name_class_en'], 'ar' => $List_Class['Name']];
-                $My_Classes->Grade_id = $List_Class['Grade_id'];
+                $My_Classes->grade_id = $List_Class['grade_id'];
                 $My_Classes->save();
             }
             toastr()->success(trans('messages.success'));
@@ -41,7 +41,7 @@ class ClassroomController extends Controller
             $Classrooms = Classroom::findOrFail($request->id);
             $Classrooms->update([
                 $Classrooms->Name_Class = ['ar' => $request->Name, 'en' => $request->Name_en],
-                $Classrooms->Grade_id = $request->Grade_id,
+                $Classrooms->grade_id = $request->grade_id,
             ]);
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Classrooms.index');
@@ -68,7 +68,7 @@ class ClassroomController extends Controller
     public function Filter_Classes(Request $request)
     {
         $Grades = Grade::all();
-        $Search = Classroom::select('*')->where('Grade_id', '=', $request->Grade_id)->get();
+        $Search = Classroom::select('*')->where('grade_id', '=', $request->grade_id)->get();
         return view('pages.My_Classes.My_Classes', compact('Grades'))->withDetails($Search);
     }
 }

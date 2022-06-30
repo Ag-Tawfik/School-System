@@ -108,7 +108,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{ trans('Students_trans.Date_of_Birth') }} :</label>
-                                <input class="form-control" type="text" id="datepicker-action" name="Date_Birth"
+                                <input class="form-control" type="text" id="datepicker-action" name="birthday"
                                     data-date-format="yyyy-mm-dd">
                             </div>
                         </div>
@@ -120,9 +120,9 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="Grade_id">{{ trans('Students_trans.Grade') }} : <span
+                                <label for="grade_id">{{ trans('Students_trans.Grade') }} : <span
                                         class="text-danger">*</span></label>
-                                <select class="custom-select mr-sm-2" name="Grade_id">
+                                <select class="custom-select mr-sm-2" name="grade_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
                                     @foreach ($my_classes as $c)
                                         <option value="{{ $c->id }}">{{ $c->Name }}</option>
@@ -203,11 +203,11 @@
 @toastr_render
 <script>
     $(document).ready(function() {
-        $('select[name="Grade_id"]').on('change', function() {
-            var Grade_id = $(this).val();
-            if (Grade_id) {
+        $('select[name="grade_id"]').on('change', function() {
+            var grade_id = $(this).val();
+            if (grade_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    url: "{{ URL::to('Get_classrooms') }}/" + grade_id,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {

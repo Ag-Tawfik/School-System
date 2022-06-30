@@ -22,7 +22,7 @@ return [
     'delete_Grade_Error' => 'The Grade cannot be deleted because there are classes attached to it',
     'required_ar' => 'Please Enter The Section Name in Arabic',
     'required_en' => 'Please Enter The Section Name in English',
-    'Grade_id_required' => 'Please Select The Grade Name',
+    'grade_id_required' => 'Please Select The Grade Name',
     'Class_id_required' => 'Please Select The Class Name',
     'Processes' => 'Processes',
     'Edit' => 'Edit',

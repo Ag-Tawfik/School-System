@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
+use App\Models\BloodType;
 use App\Models\Classroom;
 use App\Models\Gender;
 use App\Models\Grade;
 use App\Models\Image;
-use App\Models\TheParent;
 use App\Models\Nationalitie;
 use App\Models\Section;
 use App\Models\Student;
-use App\Models\BloodType;
+use App\Models\TheParent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -45,8 +45,8 @@ class StudentRepository implements StudentRepositoryInterface
             $Edit_Students->gender_id = $request->gender_id;
             $Edit_Students->nationalitie_id = $request->nationalitie_id;
             $Edit_Students->blood_id = $request->blood_id;
-            $Edit_Students->Date_Birth = $request->Date_Birth;
-            $Edit_Students->Grade_id = $request->Grade_id;
+            $Edit_Students->birthday = $request->birthday;
+            $Edit_Students->grade_id = $request->grade_id;
             $Edit_Students->Classroom_id = $request->Classroom_id;
             $Edit_Students->section_id = $request->section_id;
             $Edit_Students->parent_id = $request->parent_id;
@@ -71,7 +71,7 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Get_classrooms($id)
     {
-        $list_classes = Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
+        $list_classes = Classroom::where("grade_id", $id)->pluck("Name_Class", "id");
         return $list_classes;
     }
 
@@ -94,8 +94,8 @@ class StudentRepository implements StudentRepositoryInterface
             $students->gender_id = $request->gender_id;
             $students->nationalitie_id = $request->nationalitie_id;
             $students->blood_id = $request->blood_id;
-            $students->Date_Birth = $request->Date_Birth;
-            $students->Grade_id = $request->Grade_id;
+            $students->birthday = $request->birthday;
+            $students->grade_id = $request->grade_id;
             $students->Classroom_id = $request->Classroom_id;
             $students->section_id = $request->section_id;
             $students->parent_id = $request->parent_id;

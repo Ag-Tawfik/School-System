@@ -27,7 +27,7 @@ class StoreSections extends FormRequest
 
             'Name_Section_Ar' => 'required',
             'Name_Section_En' => 'required',
-            'Grade_id' => 'required',
+            'grade_id' => 'required',
             'Class_id' => 'required',
 
         ];
@@ -38,7 +38,7 @@ class StoreSections extends FormRequest
         return [
             'Name_Section_Ar.required' => trans('Sections_trans.required_ar'),
             'Name_Section_En.required' => trans('Sections_trans.required_en'),
-            'Grade_id.required' => trans('Sections_trans.Grade_id_required'),
+            'grade_id.required' => trans('Sections_trans.grade_id_required'),
             'Class_id.required' => trans('Sections_trans.Class_id_required'),
         ];
     }

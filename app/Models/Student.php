@@ -34,7 +34,7 @@ class Student extends Model
 
     public function section(): belongsTo
     {
-        return $this->belongsTo(Section::class, 'section_id');
+        return $this->belongsTo(Section::class);
     }
 
     public function images(): morphMany
@@ -44,11 +44,11 @@ class Student extends Model
 
     public function Nationality(): belongsTo
     {
-        return $this->belongsTo(Nationalitie::class, 'nationalitie_id');
+        return $this->belongsTo(Nationalitie::class);
     }
 
-    public function myparent(): belongsTo
+    public function theparent(): belongsTo
     {
-        return $this->belongsTo(My_Parent::class, 'parent_id');
+        return $this->belongsTo(TheParent::class);
     }
 }

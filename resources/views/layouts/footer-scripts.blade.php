@@ -66,11 +66,11 @@
 
 <script>
     $(document).ready(function () {
-        $('select[name="Grade_id"]').on('change', function () {
-            var Grade_id = $(this).val();
-            if (Grade_id) {
+        $('select[name="grade_id"]').on('change', function () {
+            var grade_id = $(this).val();
+            if (grade_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    url: "{{ URL::to('Get_classrooms') }}/" + grade_id,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
@@ -124,11 +124,11 @@
 
 <script>
     $(document).ready(function () {
-        $('select[name="Grade_id_new"]').on('change', function () {
-            var Grade_id = $(this).val();
-            if (Grade_id) {
+        $('select[name="grade_id_new"]').on('change', function () {
+            var grade_id = $(this).val();
+            if (grade_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    url: "{{ URL::to('Get_classrooms') }}/" + grade_id,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {

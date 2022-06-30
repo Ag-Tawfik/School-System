@@ -18,7 +18,7 @@ class ClassroomTableSeeder extends Seeder
                     'en' => $fakerEn->unique()->randomElement(['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5']),
                     'ar' => $fakerAr->unique()->randomElement(['الصف الاول', 'الصف الثاني', 'الصف الثالث', 'الصف الرابع', 'الصف الخامس']),
                 ],
-                'Grade_id' => Grade::all()->random()->id,
+                'grade_id' => Grade::all()->random()->id,
             ]);
         }
     }

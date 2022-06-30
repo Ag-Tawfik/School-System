@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'personal_information' => 'المعلومات الشخصية',
     'name' => 'اسم الطالب',
     'name_ar' => 'الاسم باللغة العربية',
@@ -32,4 +31,6 @@ return [
     'created_at' => 'تاريخ الاضافة',
     'Download' => 'تحميل',
     'delete' => 'حذف',
+    'New_academic_grade' => 'المرحلة الدراسية الجديدة',
+    'Old_academic_grade' => 'المرحلة الدراسية القديمة',
 ];

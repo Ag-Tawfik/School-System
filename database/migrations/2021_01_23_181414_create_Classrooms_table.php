@@ -9,16 +9,16 @@ class CreateClassroomsTable extends Migration
 
     public function up()
     {
-        Schema::create('Classrooms', function (Blueprint $table) {
+        Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->string('Name_Class');
-            $table->foreignId('Grade_id')->constrained('Grades')->cascadeOnDelete();
+            $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('Classrooms');
+        Schema::drop('classrooms');
     }
 }

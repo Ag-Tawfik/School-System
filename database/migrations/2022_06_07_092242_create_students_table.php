@@ -21,9 +21,9 @@ class CreateStudentsTable extends Migration
             $table->foreignId('gender_id')->constrained('genders')->onDelete('cascade');
             $table->foreignId('nationalitie_id')->constrained('nationalities')->onDelete('cascade');
             $table->foreignId('blood_id')->constrained('blood_types')->onDelete('cascade');
-            $table->date('Date_Birth');
-            $table->foreignId('Grade_id')->constrained('Grades')->onDelete('cascade');
-            $table->foreignId('Classroom_id')->constrained('Classrooms')->onDelete('cascade');
+            $table->date('birthday');
+            $table->foreignId('grade_id')->constrained('grades')->onDelete('cascade');
+            $table->foreignId('classroom_id')->constrained('classrooms')->onDelete('cascade');
             $table->foreignId('section_id')->constrained('sections')->onDelete('cascade');
             $table->foreignId('parent_id')->constrained('the_parents')->onDelete('cascade');
             $table->string('academic_year');

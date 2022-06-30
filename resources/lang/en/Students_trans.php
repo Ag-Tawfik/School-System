@@ -31,4 +31,6 @@ return [
     'created_at' => 'Created At',
     'Download' => 'Download',
     'delete' => 'Delete',
+    'New_academic_grade' => 'New Academic Grade',
+    'Old_academic_grade' => 'Old Academic Grade',
 ];

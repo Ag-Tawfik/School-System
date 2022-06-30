@@ -25,7 +25,7 @@ class SectionController extends Controller
             $validated = $request->validated();
             $Sections = new Section();
             $Sections->Name_Section = ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En];
-            $Sections->Grade_id = $request->Grade_id;
+            $Sections->grade_id = $request->grade_id;
             $Sections->Class_id = $request->Class_id;
             $Sections->Status = 1;
             $Sections->save();
@@ -43,7 +43,7 @@ class SectionController extends Controller
             $validated = $request->validated();
             $Sections = Section::findOrFail($request->id);
             $Sections->Name_Section = ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En];
-            $Sections->Grade_id = $request->Grade_id;
+            $Sections->grade_id = $request->grade_id;
             $Sections->Class_id = $request->Class_id;
             if (isset($request->Status)) {
                 $Sections->Status = 1;
@@ -73,7 +73,7 @@ class SectionController extends Controller
 
     public function getclasses($id)
     {
-        $list_classes = Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
+        $list_classes = Classroom::where("grade_id", $id)->pluck("Name_Class", "id");
         return $list_classes;
     }
 }

@@ -153,7 +153,7 @@
                                                                                         <div class="col">
                                                                                             <label for="inputName"
                                                                                                    class="control-label">{{ trans('Sections_trans.Name_Grade') }}</label>
-                                                                                            <select name="Grade_id"
+                                                                                            <select name="grade_id"
                                                                                                     class="custom-select"
                                                                                                     onclick="console.log($(this).val())">
                                                                                                 <!--placeholder-->
@@ -333,7 +333,7 @@
                                         <div class="col">
                                             <label for="inputName"
                                                    class="control-label">{{ trans('Sections_trans.Name_Grade') }}</label>
-                                            <select name="Grade_id" class="custom-select"
+                                            <select name="grade_id" class="custom-select"
                                                     onchange="console.log($(this).val())">
                                                 <!--placeholder-->
                                                 <option value="" selected
@@ -387,11 +387,11 @@
             @toastr_render
             <script>
                 $(document).ready(function () {
-                    $('select[name="Grade_id"]').on('change', function () {
-                        var Grade_id = $(this).val();
-                        if (Grade_id) {
+                    $('select[name="grade_id"]').on('change', function () {
+                        var grade_id = $(this).val();
+                        if (grade_id) {
                             $.ajax({
-                                url: "{{ URL::to('classes') }}/" + Grade_id,
+                                url: "{{ URL::to('classes') }}/" + grade_id,
                                 type: "GET",
                                 dataType: "json",
                                 success: function (data) {

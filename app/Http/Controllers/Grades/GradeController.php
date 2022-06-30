@@ -49,7 +49,7 @@ class GradeController extends Controller
 
     public function destroy(Request $request)
     {
-        $MyClass_id = Classroom::where('Grade_id', $request->id)->pluck('Grade_id');
+        $MyClass_id = Classroom::where('grade_id', $request->id)->pluck('grade_id');
         if ($MyClass_id->count() == 0) {
             $Grades = Grade::findOrFail($request->id)->delete();
             toastr()->error(trans('messages.Delete'));

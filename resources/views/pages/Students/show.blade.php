@@ -70,13 +70,13 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.Date_of_Birth') }}</th>
-                                            <td>{{ $Student->Date_Birth }}</td>
+                                            <td>{{ $Student->birthday }}</td>
                                         </tr>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.parent') }}</th>
-                                            <td>{{ $Student->myparent->Name_Father }}</td>
+                                            <td>{{ $Student->theparent->Name_Father }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.academic_year') }}</th>
