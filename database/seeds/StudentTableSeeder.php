@@ -16,7 +16,7 @@ class StudentTableSeeder extends Seeder
     {
         $fakerAr = Faker\Factory::create('ar_SA');
         $fakerEn = Faker\Factory::create('en_US');
-        $numbers = 5;
+        $numbers = 10;
 
         for ($i = 0; $i < $numbers; $i++) {
             Student::create([
@@ -31,7 +31,7 @@ class StudentTableSeeder extends Seeder
                 'blood_id' => BloodType::all()->random()->id,
                 'birthday' => $fakerEn->date,
                 'grade_id' => Grade::all()->random()->id,
-                'Classroom_id' => Classroom::all()->random()->id,
+                'classroom_id' => Classroom::all()->random()->id,
                 'section_id' => Section::all()->random()->id,
                 'parent_id' => TheParent::all()->random()->id,
                 'academic_year' => $fakerEn->year,

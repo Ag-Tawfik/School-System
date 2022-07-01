@@ -12,18 +12,18 @@ class Section extends Model
     use HasTranslations;
 
     public $translatable = [
-        'Name_Section',
+        'section_name',
     ];
 
     protected $fillable = [
-        'Name_Section',
+        'section_name',
         'grade_id',
-        'Class_id',
+        'class_id',
     ];
 
     public function My_classs(): belongsTo
     {
-        return $this->belongsTo(Classroom::class, 'Class_id');
+        return $this->belongsTo(Classroom::class, 'class_id');
     }
 
     public function teachers(): belongsToMany

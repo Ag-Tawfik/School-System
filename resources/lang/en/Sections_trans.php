@@ -1,20 +1,19 @@
 <?php
 
 return [
-
     'title_page' => 'Sections',
     'List_Grade' => 'Grade List',
     'add_section' => 'Add Section ',
     'edit_Section' => 'Edit Section',
     'delete_Section' => 'Delete Section',
     'Warning_Section' => 'Are Sure Of The Deleting Process ?',
-    'Section_name_ar' => 'Section Name In Arabic',
-    'Section_name_en' => 'Section name In English',
+    'Section_name_ar' => 'Name In Arabic',
+    'Section_name_en' => 'Name In English',
     'Select_Grade' => '-- Select Grade --',
     'Name_Grade' => 'Grade Name',
     'submit' => 'Submit',
-    'Name_Section' => 'Name Section',
-    'Name_Class' => 'Class Name',
+    'section_name' => 'Section Name',
+    'class_name' => 'Class Name',
     'Name_Teacher' => 'Teacher Name',
     'Status' => 'Status',
     'Status_Section_AC' => 'Active',
@@ -28,5 +27,4 @@ return [
     'Edit' => 'Edit',
     'Delete' => 'Delete',
     'Close' => 'Close',
-
 ];

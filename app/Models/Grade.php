@@ -10,11 +10,11 @@ class Grade extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['Name'];
+    public $translatable = ['name'];
 
     protected $fillable = [
-        'Name',
-        'Notes',
+        'name',
+        'notes',
     ];
 
     public function Sections(): HasMany

@@ -9,15 +9,15 @@ class GradeTableSeeder extends Seeder
     {
         $fakerAr = Faker\Factory::create('ar_SA');
         $fakerEn = Faker\Factory::create('en_US');
-        $numbers = 5;
+        $numbers = 10;
 
         for ($i = 0; $i < $numbers; $i++) {
             Grade::create([
-                'Name' => [
-                    'en' => $fakerEn->unique()->randomElement(['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5']),
-                    'ar' => $fakerAr->unique()->randomElement(['المرحلة 1', 'المرحلة 2', 'المرحلة 3', 'المرحلة 4', 'المرحلة 5']),
+                'name' => [
+                    'en' => $fakerEn->unique()->randomElement(['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10']),
+                    'ar' => $fakerAr->unique()->randomElement(['المرحلة 1', 'المرحلة 2', 'المرحلة 3', 'المرحلة 4', 'المرحلة 5', 'المرحلة 6', 'المرحلة 7', 'المرحلة 8', 'المرحلة 9', 'المرحلة 10']),
                 ],
-                'Notes' => $fakerEn->paragraph(1),
+                'notes' => $fakerEn->paragraph(1),
             ]);
         }
     }

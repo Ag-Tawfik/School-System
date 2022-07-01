@@ -11,20 +11,20 @@ class TeacherTableSeeder extends Seeder
     {
         $fakerAr = Faker\Factory::create('ar_SA');
         $fakerEn = Faker\Factory::create('en_US');
-        $numbers = 5;
+        $numbers = 10;
 
         for ($i = 0; $i < $numbers; $i++) {
             Teacher::create([
-                'Email' => $fakerEn->unique()->safeEmail,
-                'Password' => bcrypt('password'),
-                'Name' => [
+                'email' => $fakerEn->unique()->safeEmail,
+                'password' => bcrypt('password'),
+                'name' => [
                     'en' => $fakerEn->name,
                     'ar' => $fakerAr->name,
                 ],
-                'Specialization_id' => Specialization::all()->random()->id,
-                'Gender_id' => Gender::all()->random()->id,
-                'Joining_Date' => $fakerEn->date,
-                'Address' => $fakerEn->address,
+                'specialization_id' => Specialization::all()->random()->id,
+                'gender_id' => Gender::all()->random()->id,
+                'joining_date' => $fakerEn->date,
+                'address' => $fakerEn->address,
             ]);
         }
     }

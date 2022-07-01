@@ -62,11 +62,11 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.classrooms') }}</th>
-                                            <td>{{ $Student->classroom->Name_Class }}</td>
+                                            <td>{{ $Student->classroom->class_name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.section') }}</th>
-                                            <td>{{ $Student->section->Name_Section }}</td>
+                                            <td>{{ $Student->section->section_name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.Date_of_Birth') }}</th>

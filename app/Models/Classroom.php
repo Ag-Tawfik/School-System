@@ -11,10 +11,10 @@ class Classroom extends Model
 
     use HasTranslations;
 
-    public $translatable = ['Name_Class'];
+    public $translatable = ['class_name'];
 
     protected $fillable = [
-        'Name_Class',
+        'class_name',
         'grade_id',
     ];
 

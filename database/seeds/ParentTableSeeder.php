@@ -13,7 +13,7 @@ class ParentTableSeeder extends Seeder
     {
         $fakerAr = Faker\Factory::create( 'ar_SA' );
         $fakerEn = Faker\Factory::create( 'en_US' );
-        $numbers = 5;
+        $numbers = 10;
 
         for ($i = 0; $i < $numbers; $i++) {
             TheParent::create([

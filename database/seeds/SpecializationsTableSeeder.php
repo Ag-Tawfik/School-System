@@ -17,12 +17,19 @@ class SpecializationsTableSeeder extends Seeder
 
         $specializations = [
             ['en' => 'Arabic', 'ar' => 'عربي'],
-            ['en' => 'Sciences', 'ar' => 'علوم'],
-            ['en' => 'Computer', 'ar' => 'حاسب الي'],
             ['en' => 'English', 'ar' => 'انجليزي'],
+            ['en' => 'Fransh', 'ar' => 'الفرنسية'],
+            ['en' => 'Sciences', 'ar' => 'علوم'],
+            ['en' => 'Computer Science', 'ar' => 'علوم الكمبيوتر'],
+            ['en' => 'Mathematics', 'ar' => 'الرياضيات'],
+            ['en' => 'Geography', 'ar' => 'جغرافية'],
+            ['en' => 'Geometry', 'ar' => 'الهندسة'],
+            ['en' => 'Geology', 'ar' => 'جيولوجيا'],
+            ['en' => 'Philosophy', 'ar' => 'فلسفة'],
+            ['en' => 'Physics', 'ar' => 'الفيزياء'],
         ];
-        foreach ($specializations as $specialization){
-            Specialization::create(['Name' => $specialization]);
+        foreach ($specializations as $specialization) {
+            Specialization::create(['name' => $specialization]);
         }
     }
 }

@@ -24,7 +24,7 @@ class ClassroomController extends Controller
             $validated = $request->validated();
             foreach ($List_Classes as $List_Class) {
                 $My_Classes = new Classroom();
-                $My_Classes->Name_Class = ['en' => $List_Class['Name_class_en'], 'ar' => $List_Class['Name']];
+                $My_Classes->class_name = ['en' => $List_Class['class_name_en'], 'ar' => $List_Class['Name']];
                 $My_Classes->grade_id = $List_Class['grade_id'];
                 $My_Classes->save();
             }
@@ -40,7 +40,7 @@ class ClassroomController extends Controller
         try {
             $Classrooms = Classroom::findOrFail($request->id);
             $Classrooms->update([
-                $Classrooms->Name_Class = ['ar' => $request->Name, 'en' => $request->Name_en],
+                $Classrooms->class_name = ['ar' => $request->Name, 'en' => $request->Name_en],
                 $Classrooms->grade_id = $request->grade_id,
             ]);
             toastr()->success(trans('messages.Update'));

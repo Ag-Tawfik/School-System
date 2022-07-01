@@ -46,8 +46,8 @@
                                                 <td>{{ $student->email }}</td>
                                                 <td>{{ $student->gender->Name }}</td>
                                                 <td>{{ $student->grade->Name }}</td>
-                                                <td>{{ $student->classroom->Name_Class }}</td>
-                                                <td>{{ $student->section->Name_Section }}</td>
+                                                <td>{{ $student->classroom->class_name }}</td>
+                                                <td>{{ $student->section->section_name }}</td>
                                                 <td>
                                                     <a href="{{ route('Students.edit', $student->id) }}"
                                                         class="btn btn-info btn-sm" role="button"

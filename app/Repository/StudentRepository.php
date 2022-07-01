@@ -47,7 +47,7 @@ class StudentRepository implements StudentRepositoryInterface
             $Edit_Students->blood_id = $request->blood_id;
             $Edit_Students->birthday = $request->birthday;
             $Edit_Students->grade_id = $request->grade_id;
-            $Edit_Students->Classroom_id = $request->Classroom_id;
+            $Edit_Students->Classroom_id = $request->classroom_id;
             $Edit_Students->section_id = $request->section_id;
             $Edit_Students->parent_id = $request->parent_id;
             $Edit_Students->academic_year = $request->academic_year;
@@ -71,14 +71,14 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Get_classrooms($id)
     {
-        $list_classes = Classroom::where("grade_id", $id)->pluck("Name_Class", "id");
+        $list_classes = Classroom::where("grade_id", $id)->pluck("class_name", "id");
         return $list_classes;
     }
 
     //Get Sections
     public function Get_Sections($id)
     {
-        $list_sections = Section::where("Class_id", $id)->pluck("Name_Section", "id");
+        $list_sections = Section::where("class_id", $id)->pluck("section_name", "id");
         return $list_sections;
     }
 
@@ -96,7 +96,7 @@ class StudentRepository implements StudentRepositoryInterface
             $students->blood_id = $request->blood_id;
             $students->birthday = $request->birthday;
             $students->grade_id = $request->grade_id;
-            $students->Classroom_id = $request->Classroom_id;
+            $students->Classroom_id = $request->classroom_id;
             $students->section_id = $request->section_id;
             $students->parent_id = $request->parent_id;
             $students->academic_year = $request->academic_year;

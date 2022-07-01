@@ -19,7 +19,7 @@ class GenderTableSeeder extends Seeder
             ['en' => 'Female', 'ar' => 'انثي'],
         ];
         foreach ($genders as $gender) {
-            Gender::create(['Name' => $gender]);
+            Gender::create(['name' => $gender]);
         }
     }
 }

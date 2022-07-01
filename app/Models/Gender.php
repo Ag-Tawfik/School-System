@@ -9,9 +9,9 @@ class Gender extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['Name'];
+    public $translatable = ['name'];
 
     protected $fillable = [
-        'Name',
+        'name',
     ];
 }

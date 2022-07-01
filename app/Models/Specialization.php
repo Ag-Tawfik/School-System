@@ -10,10 +10,10 @@ class Specialization extends Model
     use HasTranslations;
 
     public $translatable = [
-        'Name',
+        'name',
     ];
 
     protected $fillable = [
-        'Name',
+        'name',
     ];
 }

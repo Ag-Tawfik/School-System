@@ -12,7 +12,7 @@ return [
     'submit' => 'Submit',
     'required_ar' => 'Please Enter The class Name in Arabic',
     'required_en' => 'Please Enter The class Name in English',
-    'Name_class_en' => 'Class Name İn English',
+    'class_name_en' => 'Class Name',
     'Name_Grade' => 'Grade Name',
     'add_row' => 'Add Row',
     'delete_row' => 'Delete Row',
