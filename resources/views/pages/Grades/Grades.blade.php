@@ -55,26 +55,26 @@
                         </thead>
                         <tbody>
                             <?php $i = 0; ?>
-                            @foreach ($Grades as $Grade)
+                            @foreach ($grades as $grade)
                                 <tr>
                                     <?php $i++; ?>
                                     <td>{{ $i }}</td>
-                                    <td>{{ $Grade->name }}</td>
-                                    <td>{{ $Grade->notes }}</td>
+                                    <td>{{ $grade->name }}</td>
+                                    <td>{{ $grade->notes }}</td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#edit{{ $Grade->id }}"
+                                            data-target="#edit{{ $grade->id }}"
                                             title="{{ trans('Grades_trans.Edit') }}"><i
                                                 class="fa fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#delete{{ $Grade->id }}"
+                                            data-target="#delete{{ $grade->id }}"
                                             title="{{ trans('Grades_trans.Delete') }}"><i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
 
                                 <!-- edit_modal_Grade -->
-                                <div class="modal fade" id="edit{{ $Grade->id }}" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="edit{{ $grade->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -95,22 +95,21 @@
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col">
-                                                            <label for="name"
+                                                            <label for="name_ar"
                                                                 class="mr-sm-2">{{ trans('Grades_trans.Grade_name_ar') }}
                                                                 :</label>
-                                                            <input id="name" type="text" name="name"
-                                                                class="form-control"
-                                                                value="{{ $Grade->getTranslation('name', 'ar') }}"
-                                                                required>
+                                                            <input id="name_ar" type="text" class="form-control"
+                                                                value="{{ $grade->getTranslation('name', 'ar') }}"
+                                                                name="name_ar" required>
                                                             <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $Grade->id }}">
+                                                                class="form-control" value="{{ $grade->id }}">
                                                         </div>
                                                         <div class="col">
                                                             <label for="name_en"
                                                                 class="mr-sm-2">{{ trans('Grades_trans.Grade_name_en') }}
                                                                 :</label>
-                                                            <input type="text" class="form-control"
-                                                                value="{{ $Grade->getTranslation('name', 'en') }}"
+                                                            <input id="name_en" type="text" class="form-control"
+                                                                value="{{ $grade->getTranslation('name', 'en') }}"
                                                                 name="name_en" required>
                                                         </div>
                                                     </div>
@@ -118,7 +117,7 @@
                                                         <label
                                                             for="exampleFormControlTextarea1">{{ trans('Grades_trans.Notes') }}
                                                             :</label>
-                                                        <textarea class="form-control" name="notes" id="exampleFormControlTextarea1" rows="3">{{ $Grade->notes }}</textarea>
+                                                        <textarea class="form-control" name="notes" id="exampleFormControlTextarea1" rows="3">{{ $grade->notes }}</textarea>
                                                     </div>
                                                     <br><br>
 
@@ -136,7 +135,7 @@
                                 </div>
 
                                 <!-- delete_modal_Grade -->
-                                <div class="modal fade" id="delete{{ $Grade->id }}" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="delete{{ $grade->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -157,7 +156,7 @@
                                                     @csrf
                                                     {{ trans('Grades_trans.Warning_Grade') }}
                                                     <input id="id" type="hidden" name="id"
-                                                        class="form-control" value="{{ $Grade->id }}">
+                                                        class="form-control" value="{{ $grade->id }}">
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
@@ -196,9 +195,9 @@
                         @csrf
                         <div class="row">
                             <div class="col">
-                                <label for="name" class="mr-sm-2">{{ trans('Grades_trans.Grade_name_ar') }}
+                                <label for="name_ar" class="mr-sm-2">{{ trans('Grades_trans.Grade_name_ar') }}
                                     :</label>
-                                <input id="name" type="text" name="name" class="form-control">
+                                <input id="name" type="text" name="name_ar" class="form-control">
                             </div>
                             <div class="col">
                                 <label for="name_en" class="mr-sm-2">{{ trans('Grades_trans.Grade_name_en') }}

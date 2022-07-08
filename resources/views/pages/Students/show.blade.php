@@ -40,47 +40,47 @@
                                         <tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.name') }}
-                                            <td>{{ $Student->name }}</td>
+                                            <td>{{ $students->name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.email') }}</th>
-                                            <td>{{ $Student->email }}</td>
+                                            <td>{{ $student->email }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.gender') }}</th>
-                                            <td>{{ $Student->gender->Name }}</td>
+                                            <td>{{ $student->gender->Name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.Nationality') }}</th>
-                                            <td>{{ $Student->Nationality->Name }}</td>
+                                            <td>{{ $student->Nationality->Name }}</td>
                                         </tr>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.Grade') }}</th>
-                                            <td>{{ $Student->grade->Name }}</td>
+                                            <td>{{ $student->grade->Name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.classrooms') }}</th>
-                                            <td>{{ $Student->classroom->class_name }}</td>
+                                            <td>{{ $student->classroom->class_name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.section') }}</th>
-                                            <td>{{ $Student->section->section_name }}</td>
+                                            <td>{{ $student->section->section_name }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.Date_of_Birth') }}</th>
-                                            <td>{{ $Student->birthday }}</td>
+                                            <td>{{ $student->birthday }}</td>
                                         </tr>
                                         </tr>
 
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.parent') }}</th>
-                                            <td>{{ $Student->theparent->Name_Father }}</td>
+                                            <td>{{ $student->theparent->Name_Father }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">{{ trans('Students_trans.academic_year') }}</th>
-                                            <td>{{ $Student->academic_year }}</td>
+                                            <td>{{ $student->academic_year }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -100,9 +100,9 @@
                                                     <input type="file" accept="image/*" name="photos[]" multiple
                                                         required>
                                                     <input type="hidden" name="student_name"
-                                                        value="{{ $Student->name }}">
+                                                        value="{{ $student->name }}">
                                                     <input type="hidden" name="student_id"
-                                                        value="{{ $Student->id }}">
+                                                        value="{{ $student->id }}">
                                                 </div>
                                             </div>
                                             <br><br>
@@ -123,7 +123,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($Student->images as $attachment)
+                                            @foreach ($student->images as $attachment)
                                                 <tr style='text-align:center;vertical-align:middle'>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $attachment->filename }}</td>

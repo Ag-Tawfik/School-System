@@ -33,7 +33,7 @@ class StoreStudentsRequest extends FormRequest
             'blood_id' => 'required',
             'birthday' => 'required|date|date_format:Y-m-d',
             'grade_id' => 'required',
-            'Classroom_id' => 'required',
+            'classroom_id' => 'required',
             'section_id' => 'required',
             'parent_id' => 'required',
             'academic_year' => 'required',

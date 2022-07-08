@@ -17,7 +17,7 @@ class Grade extends Model
         'notes',
     ];
 
-    public function Sections(): HasMany
+    public function sections(): HasMany
     {
         return $this->hasMany(Section::class, 'grade_id');
     }

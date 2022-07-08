@@ -15,13 +15,13 @@ class SectionTableSeeder extends Seeder
 
         for ($i = 0; $i < $numbers; $i++) {
             Section::create([
-                'section_name' => [
+                'name' => [
                     'en' => $fakerEn->unique()->randomElement(['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5', 'Section 6', 'Section 7', 'Section 8', 'Section 9', 'Section 10']),
                     'ar' => $fakerAr->unique()->randomElement(['القسم الاول', 'القسم الثاني', 'القسم الثالث', 'القسم الرابع', 'القسم الخامس', 'القسم السادس', 'القسم السابع', 'القسم الثامن', 'القسم التاسع', 'القسم العاشر']),
                 ],
-                'Status' => $fakerEn->boolean(),
+                'status' => $fakerEn->boolean(),
                 'grade_id' => Grade::all()->random()->id,
-                'Class_id' => Classroom::all()->random()->id,
+                'class_id' => Classroom::all()->random()->id,
             ]);
         }
     }

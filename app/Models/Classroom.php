@@ -11,14 +11,14 @@ class Classroom extends Model
 
     use HasTranslations;
 
-    public $translatable = ['class_name'];
+    public $translatable = ['name'];
 
     protected $fillable = [
-        'class_name',
+        'name',
         'grade_id',
     ];
 
-    public function Grades(): BelongsTo
+    public function grades(): BelongsTo
     {
         return $this->belongsTo(Grade::class, 'grade_id');
     }

@@ -18,8 +18,8 @@ class TeacherController extends Controller
 
     public function index()
     {
-        $Teachers = $this->Teacher->getAllTeachers();
-        return view('pages.Teachers.Teachers', compact('Teachers'));
+        $teachers = $this->Teacher->getAllTeachers();
+        return view('pages.Teachers.Teachers', compact('teachers'));
     }
 
     public function create()
@@ -36,10 +36,10 @@ class TeacherController extends Controller
 
     public function edit($id)
     {
-        $Teachers = $this->Teacher->editTeachers($id);
+        $teachers = $this->Teacher->editTeachers($id);
         $specializations = $this->Teacher->Getspecialization();
         $genders = $this->Teacher->GetGender();
-        return view('pages.Teachers.edit', compact('Teachers', 'specializations', 'genders'));
+        return view('pages.Teachers.edit', compact('teachers', 'specializations', 'genders'));
     }
 
     public function update(Request $request)

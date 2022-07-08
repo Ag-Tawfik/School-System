@@ -12,21 +12,21 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $My_Classes = Classroom::all();
-        $Grades = Grade::all();
-        return view('pages.My_Classes.My_Classes', compact('My_Classes', 'Grades'));
+        $classrooms = Classroom::all();
+        $grades = Grade::all();
+        return view('pages.My_Classes.My_Classes', compact('classrooms', 'grades'));
     }
 
     public function store(StoreClassroom $request)
     {
-        $List_Classes = $request->List_Classes;
+        $classes_list = $request->classes_list;
         try {
-            $validated = $request->validated();
-            foreach ($List_Classes as $List_Class) {
-                $My_Classes = new Classroom();
-                $My_Classes->class_name = ['en' => $List_Class['class_name_en'], 'ar' => $List_Class['Name']];
-                $My_Classes->grade_id = $List_Class['grade_id'];
-                $My_Classes->save();
+            $request->validated();
+            foreach ($classes_list as $class_list) {
+                $classrooms = new Classroom();
+                $classrooms->name = ['en' => $class_list['name_en'], 'ar' => $class_list['name_ar']];
+                $classrooms->grade_id = $class_list['grade_id'];
+                $classrooms->save();
             }
             toastr()->success(trans('messages.success'));
             return redirect()->route('Classrooms.index');
@@ -38,10 +38,10 @@ class ClassroomController extends Controller
     public function update(Request $request)
     {
         try {
-            $Classrooms = Classroom::findOrFail($request->id);
-            $Classrooms->update([
-                $Classrooms->class_name = ['ar' => $request->Name, 'en' => $request->Name_en],
-                $Classrooms->grade_id = $request->grade_id,
+            $classroom = Classroom::findOrFail($request->id);
+            $classroom->update([
+                $classroom->name = ['ar' => $request->name_ar, 'en' => $request->name_en],
+                $classroom->grade_id = $request->grade_id,
             ]);
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Classrooms.index');
@@ -52,7 +52,7 @@ class ClassroomController extends Controller
 
     public function destroy(Request $request)
     {
-        $Classrooms = Classroom::findOrFail($request->id)->delete();
+        Classroom::findOrFail($request->id)->delete();
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('Classrooms.index');
     }
@@ -67,8 +67,8 @@ class ClassroomController extends Controller
 
     public function Filter_Classes(Request $request)
     {
-        $Grades = Grade::all();
-        $Search = Classroom::select('*')->where('grade_id', '=', $request->grade_id)->get();
-        return view('pages.My_Classes.My_Classes', compact('Grades'))->withDetails($Search);
+        $grades = Grade::all();
+        $search = Classroom::select('*')->where('grade_id', '=', $request->grade_id)->get();
+        return view('pages.My_Classes.My_Classes', compact('grades'))->withDetails($search);
     }
 }

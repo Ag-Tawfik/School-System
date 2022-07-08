@@ -27,7 +27,7 @@ class Teacher extends Model
         return $this->belongsTo(Gender::class, 'gender_id');
     }
 
-    public function Sections(): belongsToMany
+    public function sections(): belongsToMany
     {
         return $this->belongsToMany(Section::class, 'teacher_section');
     }

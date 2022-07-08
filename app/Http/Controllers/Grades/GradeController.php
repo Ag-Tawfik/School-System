@@ -12,18 +12,18 @@ class GradeController extends Controller
 {
     public function index()
     {
-        $Grades = Grade::all();
-        return view('pages.Grades.Grades', compact('Grades'));
+        $grades = Grade::all();
+        return view('pages.Grades.Grades', compact('grades'));
     }
 
     public function store(StoreGrades $request)
     {
         try {
-            $validated = $request->validated();
-            $Grade = new Grade();
-            $Grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name];
-            $Grade->Notes = $request->Notes;
-            $Grade->save();
+            $request->validated();
+            $grade = new Grade();
+            $grade->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+            $grade->notes = $request->notes;
+            $grade->save();
             toastr()->success(trans('messages.success'));
             return redirect()->route('Grades.index');
         } catch (\Exception $e) {
@@ -34,11 +34,11 @@ class GradeController extends Controller
     public function update(StoreGrades $request)
     {
         try {
-            $validated = $request->validated();
-            $Grades = Grade::findOrFail($request->id);
-            $Grades->update([
-                $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
-                $Grades->Notes = $request->Notes,
+            $request->validated();
+            $grades = Grade::findOrFail($request->id);
+            $grades->update([
+                $grades->name = ['ar' => $request->name_en, 'en' => $request->name_ar],
+                $grades->notes = $request->notes,
             ]);
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Grades.index');
@@ -49,9 +49,9 @@ class GradeController extends Controller
 
     public function destroy(Request $request)
     {
-        $MyClass_id = Classroom::where('grade_id', $request->id)->pluck('grade_id');
-        if ($MyClass_id->count() == 0) {
-            $Grades = Grade::findOrFail($request->id)->delete();
+        $classroom = Classroom::where('grade_id', $request->id)->pluck('grade_id');
+        if ($classroom->count() == 0) {
+            Grade::findOrFail($request->id)->delete();
             toastr()->error(trans('messages.Delete'));
             return redirect()->route('Grades.index');
         } else {

@@ -13,23 +13,23 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $Grades = Grade::with(['Sections'])->get();
-        $list_Grades = Grade::all();
+        $grades = Grade::with(['Sections'])->get();
+        $grades_list = Grade::all();
         $teachers = Teacher::all();
-        return view('pages.Sections.Sections', compact('Grades', 'list_Grades', 'teachers'));
+        return view('pages.Sections.Sections', compact('grades', 'grades_list', 'teachers'));
     }
 
     public function store(StoreSections $request)
     {
         try {
-            $validated = $request->validated();
-            $Sections = new Section();
-            $Sections->section_name = ['ar' => $request->section_name_Ar, 'en' => $request->section_name_En];
-            $Sections->grade_id = $request->grade_id;
-            $Sections->Class_id = $request->Class_id;
-            $Sections->Status = 1;
-            $Sections->save();
-            $Sections->teachers()->attach($request->teacher_id);
+            $request->validated();
+            $sections = new Section();
+            $sections->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
+            $sections->grade_id = $request->grade_id;
+            $sections->class_id = $request->class_id;
+            $sections->status = 1;
+            $sections->save();
+            $sections->teachers()->attach($request->teacher_id);
             toastr()->success(trans('messages.success'));
             return redirect()->route('Sections.index');
         } catch (\Exception $e) {
@@ -40,23 +40,23 @@ class SectionController extends Controller
     public function update(StoreSections $request)
     {
         try {
-            $validated = $request->validated();
-            $Sections = Section::findOrFail($request->id);
-            $Sections->section_name = ['ar' => $request->section_name_Ar, 'en' => $request->section_name_En];
-            $Sections->grade_id = $request->grade_id;
-            $Sections->Class_id = $request->Class_id;
-            if (isset($request->Status)) {
-                $Sections->Status = 1;
+            $request->validated();
+            $sections = Section::findOrFail($request->id);
+            $sections->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
+            $sections->grade_id = $request->grade_id;
+            $sections->class_id = $request->class_id;
+            if (isset($request->status)) {
+                $sections->status = 1;
             } else {
-                $Sections->Status = 2;
+                $sections->status = 2;
             }
             // update pivot tABLE
             if (isset($request->teacher_id)) {
-                $Sections->teachers()->sync($request->teacher_id);
+                $sections->teachers()->sync($request->teacher_id);
             } else {
-                $Sections->teachers()->sync(array());
+                $sections->teachers()->sync(array());
             }
-            $Sections->save();
+            $sections->save();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Sections.index');
         } catch (\Exception $e) {
@@ -73,7 +73,7 @@ class SectionController extends Controller
 
     public function getclasses($id)
     {
-        $list_classes = Classroom::where("grade_id", $id)->pluck("class_name", "id");
-        return $list_classes;
+        $classes_list = Classroom::where("grade_id", $id)->pluck("name", "id");
+        return $classes_list;
     }
 }

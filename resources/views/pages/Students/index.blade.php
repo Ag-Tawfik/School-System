@@ -44,10 +44,10 @@
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td>{{ $student->name }}</td>
                                                 <td>{{ $student->email }}</td>
-                                                <td>{{ $student->gender->Name }}</td>
-                                                <td>{{ $student->grade->Name }}</td>
-                                                <td>{{ $student->classroom->class_name }}</td>
-                                                <td>{{ $student->section->section_name }}</td>
+                                                <td>{{ $student->gender()->name }}</td>
+                                                <td>{{ $student->grade->name }}</td>
+                                                <td>{{ $student->classroom->name }}</td>
+                                                <td>{{ $student->section->name }}</td>
                                                 <td>
                                                     <a href="{{ route('Students.edit', $student->id) }}"
                                                         class="btn btn-info btn-sm" role="button"
@@ -57,7 +57,8 @@
                                                         data-target="#Delete_Student{{ $student->id }}"
                                                         title="{{ trans('Grades_trans.Delete') }}"><i
                                                             class="fa fa-trash"></i></button>
-                                                    <a href="{{ route('Students.show', $student->id) }}" class="btn btn-warning btn-sm" role="button"
+                                                    <a href="{{ route('Students.show', $student->id) }}"
+                                                        class="btn btn-warning btn-sm" role="button"
                                                         aria-pressed="true"><i class="far fa-eye"></i></a>
                                                 </td>
                                             </tr>

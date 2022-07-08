@@ -52,15 +52,15 @@ class TeacherRepository implements TeacherRepositoryInterface
     public function UpdateTeachers($request)
     {
         try {
-            $Teachers = Teacher::findOrFail($request->id);
-            $Teachers->email = $request->email;
-            $Teachers->password = Hash::make($request->password);
-            $Teachers->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
-            $Teachers->specialization_id = $request->specialization_id;
-            $Teachers->gender_id = $request->gender_id;
-            $Teachers->joining_date = $request->joining_date;
-            $Teachers->address = $request->address;
-            $Teachers->save();
+            $teachers = Teacher::findOrFail($request->id);
+            $teachers->email = $request->email;
+            $teachers->password = Hash::make($request->password);
+            $teachers->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+            $teachers->specialization_id = $request->specialization_id;
+            $teachers->gender_id = $request->gender_id;
+            $teachers->joining_date = $request->joining_date;
+            $teachers->address = $request->address;
+            $teachers->save();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Teachers.index');
         } catch (\Exception $e) {

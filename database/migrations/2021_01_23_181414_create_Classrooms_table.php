@@ -11,7 +11,7 @@ class CreateClassroomsTable extends Migration
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
-            $table->string('class_name');
+            $table->string('name');
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete();
             $table->timestamps();
         });

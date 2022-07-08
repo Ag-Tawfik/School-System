@@ -16,23 +16,23 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('from_Grade');
-            $table->unsignedBigInteger('from_Classroom');
-            $table->unsignedBigInteger('from_Section');
-            $table->unsignedBigInteger('to_Grade');
-            $table->unsignedBigInteger('to_Classroom');
-            $table->unsignedBigInteger('to_Section');
+            $table->unsignedBigInteger('from_grade');
+            $table->unsignedBigInteger('to_grade');
+            $table->unsignedBigInteger('from_classroom');
+            $table->unsignedBigInteger('to_classroom');
+            $table->unsignedBigInteger('from_section');
+            $table->unsignedBigInteger('to_section');
             $table->timestamps();
         });
 
         Schema::table('promotions', function (Blueprint $table) {
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreign('from_Grade')->references('id')->on('grades')->onDelete('cascade');
-            $table->foreign('from_Classroom')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->foreign('from_Section')->references('id')->on('sections')->onDelete('cascade');
-            $table->foreign('to_Grade')->references('id')->on('grades')->onDelete('cascade');
-            $table->foreign('to_Classroom')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->foreign('to_Section')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('from_grade')->references('id')->on('grades')->onDelete('cascade');
+            $table->foreign('to_grade')->references('id')->on('grades')->onDelete('cascade');
+            $table->foreign('from_classroom')->references('id')->on('classrooms')->onDelete('cascade');
+            $table->foreign('to_classroom')->references('id')->on('classrooms')->onDelete('cascade');
+            $table->foreign('from_section')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('to_section')->references('id')->on('sections')->onDelete('cascade');
         });
     }
 

@@ -124,8 +124,8 @@
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="grade_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
-                                    @foreach ($my_classes as $c)
-                                        <option value="{{ $c->id }}">{{ $c->Name }}</option>
+                                    @foreach ($classroms as $classrom)
+                                        <option value="{{ $classrom->id }}">{{ $classrom->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -133,9 +133,9 @@
 
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="Classroom_id">{{ trans('Students_trans.classrooms') }} : <span
+                                <label for="classroom_id">{{ trans('Students_trans.classrooms') }} : <span
                                         class="text-danger">*</span></label>
-                                <select class="custom-select mr-sm-2" name="Classroom_id">
+                                <select class="custom-select mr-sm-2" name="classroom_id">
 
                                 </select>
                             </div>
@@ -211,12 +211,12 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('select[name="Classroom_id"]').empty();
+                        $('select[name="classroom_id"]').empty();
                         $.each(data, function(key, value) {
-                            $('select[name="Classroom_id"]').append(
+                            $('select[name="classroom_id"]').append(
                                 '<option selected disabled >{{ trans('Parent_trans.Choose') }}...</option>'
                             );
-                            $('select[name="Classroom_id"]').append(
+                            $('select[name="classroom_id"]').append(
                                 '<option value="' + key + '">' + value +
                                 '</option>');
                         });
@@ -233,11 +233,11 @@
 
 <script>
     $(document).ready(function() {
-        $('select[name="Classroom_id"]').on('change', function() {
-            var Classroom_id = $(this).val();
-            if (Classroom_id) {
+        $('select[name="classroom_id"]').on('change', function() {
+            var classroom_id = $(this).val();
+            if (classroom_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_Sections') }}/" + Classroom_id,
+                    url: "{{ URL::to('Get_Sections') }}/" + classroom_id,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {

@@ -74,10 +74,10 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('select[name="Classroom_id"]').empty();
-                        $('select[name="Classroom_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                        $('select[name="classroom_id"]').empty();
+                        $('select[name="classroom_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                         $.each(data, function (key, value) {
-                            $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            $('select[name="classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
                         });
 
                     },
@@ -94,11 +94,11 @@
 
 <script>
     $(document).ready(function () {
-        $('select[name="Classroom_id"]').on('change', function () {
-            var Classroom_id = $(this).val();
-            if (Classroom_id) {
+        $('select[name="classroom_id"]').on('change', function () {
+            var classroom_id = $(this).val();
+            if (classroom_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_Sections') }}/" + Classroom_id,
+                    url: "{{ URL::to('Get_Sections') }}/" + classroom_id,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
@@ -132,10 +132,10 @@
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('select[name="Classroom_id_new"]').empty();
-                        $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                        $('select[name="classroom_id_new"]').empty();
+                        $('select[name="classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                         $.each(data, function (key, value) {
-                            $('select[name="Classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
+                            $('select[name="classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
                         });
 
                     },
@@ -152,11 +152,11 @@
 
 <script>
     $(document).ready(function () {
-        $('select[name="Classroom_id_new"]').on('change', function () {
-            var Classroom_id = $(this).val();
-            if (Classroom_id) {
+        $('select[name="classroom_id_new"]').on('change', function () {
+            var classroom_id = $(this).val();
+            if (classroom_id) {
                 $.ajax({
-                    url: "{{ URL::to('Get_Sections') }}/" + Classroom_id,
+                    url: "{{ URL::to('Get_Sections') }}/" + classroom_id,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
