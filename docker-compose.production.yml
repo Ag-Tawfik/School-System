@@ -1,0 +1,62 @@
+version: "3.9"
+
+x-restart-policy: &restart-policy
+  restart: always
+
+services:
+  nginx:
+    <<: *restart-policy
+    image: nginx:1.19
+    network_mode: host
+    volumes:
+      - ./:/var/www/app
+      - ../ui/dist/:/var/www/ui
+      - ../dashboard/dist/:/var/www/dashboard
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - php
+
+  php:
+    <<: *restart-policy
+    image: 520762770364.dkr.ecr.eu-central-1.amazonaws.com/oniki/php-fpm:latest
+    network_mode: host
+    user: "${UID}"
+    volumes:
+      - ./:/var/www/app
+      - ./docker/fpm/production.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+    depends_on:
+      - redis
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.hnn-laravel-schedule.schedule: "0 * * * * *"
+      ofelia.job-exec.hnn-laravel-schedule.command: "php artisan schedule:run --verbose --no-interaction"
+
+  queue:
+    <<: *restart-policy
+    image: 520762770364.dkr.ecr.eu-central-1.amazonaws.com/oniki/php-queue:latest
+    network_mode: host
+    user: "${UID}"
+    volumes:
+      - "./:/var/www/app"
+    depends_on:
+      - redis
+
+  redis:
+    <<: *restart-policy
+    image: redis:6.2
+    network_mode: host
+    volumes:
+      - redis-data:/data
+
+  ofelia:
+    <<: *restart-policy
+    image: mcuadros/ofelia:latest
+    command: daemon --docker
+    depends_on:
+      - php
+    volumes:
+      - ${DOCKER_SOCKET}:/var/run/docker.sock:ro
+
+volumes:
+    redis-data:

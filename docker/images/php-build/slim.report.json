@@ -1,0 +1,443 @@
+{
+  "version": "1.0",
+  "engine": "darwin|Transformer|1.37.6|26a36c88a94c677efd734e874ba081dabb84a224|2022-04-23_06:03:56AM",
+  "containerized": false,
+  "host_distro": {
+    "name": "",
+    "version": "",
+    "display_name": "Big Sur (11.6)"
+  },
+  "type": "build",
+  "state": "done",
+  "target_reference": "oniki/php-build",
+  "system": {
+    "type": "Linux",
+    "release": "5.10.104-linuxkit",
+    "distro": {
+      "name": "Alpine Linux",
+      "version": "3.16.1",
+      "display_name": "Alpine Linux v3.16"
+    }
+  },
+  "source_image": {
+    "identity": {
+      "id": "sha256:83e743661ecf2740c8a19d23646c179bdf74d112dca9d73bcb31f6d826c5d05a",
+      "tags": [
+        "latest"
+      ],
+      "names": [
+        "oniki/php-build:latest"
+      ]
+    },
+    "size": 244530744,
+    "size_human": "244 MB",
+    "create_time": "2022-08-05T12:06:12Z",
+    "docker_version": "",
+    "architecture": "amd64",
+    "os": "linux",
+    "env_vars": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "PHPIZE_DEPS=autoconf \t\tdpkg-dev dpkg \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkgconf \t\tre2c",
+      "PHP_INI_DIR=/usr/local/etc/php",
+      "PHP_CFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+      "PHP_CPPFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+      "PHP_LDFLAGS=-Wl,-O1 -pie",
+      "GPG_KEYS=1729F83938DA44E27BA0F4D3DBDB397470D12172 BFDDD28642824F8118EF77909B67A5C12229118F",
+      "PHP_VERSION=8.0.22",
+      "PHP_URL=https://www.php.net/distributions/php-8.0.22.tar.xz",
+      "PHP_ASC_URL=https://www.php.net/distributions/php-8.0.22.tar.xz.asc",
+      "PHP_SHA256=130937c0fa3050cd33d6c415402f6ccbf0682ae83eb8d39c91164224ddfe57f1"
+    ],
+    "container_entry": {
+      "exe_path": ""
+    }
+  },
+  "minified_image_size": 64392345,
+  "minified_image_size_human": "64 MB",
+  "minified_image": "oniki/php-build.slim",
+  "minified_image_has_data": true,
+  "minified_by": 3.797512639118827,
+  "artifact_location": "/tmp/docker-slim-state/.docker-slim-state/images/83e743661ecf2740c8a19d23646c179bdf74d112dca9d73bcb31f6d826c5d05a/artifacts",
+  "container_report_name": "creport.json",
+  "seccomp_profile_name": "oniki-php-build-seccomp.json",
+  "apparmor_profile_name": "oniki-php-build-apparmor-profile",
+  "image_stack": [
+    {
+      "is_top_image": true,
+      "id": "sha256:83e743661ecf2740c8a19d23646c179bdf74d112dca9d73bcb31f6d826c5d05a",
+      "full_name": "oniki/php-build:latest",
+      "repo_name": "oniki/php-build",
+      "version_tag": "latest",
+      "raw_tags": [
+        "oniki/php-build:latest"
+      ],
+      "create_time": "2022-08-05T12:06:12Z",
+      "new_size": 244530744,
+      "new_size_human": "244 MB",
+      "instructions": [
+        {
+          "type": "ADD",
+          "time": "2022-07-18T21:00:15Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 5529061,
+          "size_human": "5.5 MB",
+          "params": "file:a2648378045615c3785c752423b1afc8dc1c2b213393344f4d0ca17e7255c1cb in /",
+          "command_snippet": "ADD file:a2648378045615c3785c752423b1afc8dc1...",
+          "command_all": "ADD file:a2648378045615c3785c752423b1afc8dc1c2b213393344f4d0ca17e7255c1cb /",
+          "target": "/",
+          "source_type": "file"
+        },
+        {
+          "type": "CMD",
+          "time": "2022-07-18T21:00:15Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"/bin/sh\"]\n",
+          "command_snippet": "CMD [\"/bin/sh\"]\n",
+          "command_all": "CMD [\"/bin/sh\"]\n"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-07-19T00:27:04Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHPIZE_DEPS=autoconf \t\tdpkg-dev dpkg \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkgconf \t\tre2c",
+          "command_snippet": "ENV PHPIZE_DEPS=autoconf \t\tdpkg-dev dpkg \t\tf...",
+          "command_all": "ENV PHPIZE_DEPS=autoconf \t\tdpkg-dev dpkg \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkgconf \t\tre2c"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-07-19T00:27:06Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 3550326,
+          "size_human": "3.6 MB",
+          "command_snippet": "RUN apk add --no-cache \t\tca-certificates \t\tc...",
+          "command_all": "RUN apk add --no-cache \t\tca-certificates \t\tcurl \t\ttar \t\txz \t\topenssl",
+          "system_commands": [
+            "apk add --no-cache ca-certificates curl tar xz openssl"
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2022-07-19T00:27:06Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 4680,
+          "size_human": "4.7 kB",
+          "command_snippet": "RUN set -eux; \tadduser -u 82 -D -S -G www-da...",
+          "command_all": "RUN set -eux; \tadduser -u 82 -D -S -G www-data www-data",
+          "system_commands": [
+            "set -eux",
+            "adduser -u 82 -D -S -G www-data www-data"
+          ]
+        },
+        {
+          "type": "ENV",
+          "time": "2022-07-19T00:27:06Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_INI_DIR=/usr/local/etc/php",
+          "command_snippet": "ENV PHP_INI_DIR=/usr/local/etc/php",
+          "command_all": "ENV PHP_INI_DIR=/usr/local/etc/php"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-07-19T00:27:07Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "command_snippet": "RUN set -eux; \tmkdir -p \"$PHP_INI_DIR/conf.d...",
+          "command_all": "RUN set -eux; \tmkdir -p \"$PHP_INI_DIR/conf.d\"; \t[ ! -d /var/www/html ]; \tmkdir -p /var/www/html; \tchown www-data:www-data /var/www/html; \tchmod 777 /var/www/html",
+          "system_commands": [
+            "set -eux",
+            "mkdir -p \"$PHP_INI_DIR/conf.d\"",
+            "[ ! -d /var/www/html ]",
+            "mkdir -p /var/www/html",
+            "chown www-data:www-data /var/www/html",
+            "chmod 777 /var/www/html"
+          ]
+        },
+        {
+          "type": "ENV",
+          "time": "2022-07-19T00:27:07Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_CFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+          "command_snippet": "ENV PHP_CFLAGS=-fstack-protector-strong -fpi...",
+          "command_all": "ENV PHP_CFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-07-19T00:27:07Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_CPPFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+          "command_snippet": "ENV PHP_CPPFLAGS=-fstack-protector-strong -f...",
+          "command_all": "ENV PHP_CPPFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-07-19T00:27:07Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_LDFLAGS=-Wl,-O1 -pie",
+          "command_snippet": "ENV PHP_LDFLAGS=-Wl,-O1 -pie",
+          "command_all": "ENV PHP_LDFLAGS=-Wl,-O1 -pie"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-07-19T00:55:48Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "GPG_KEYS=1729F83938DA44E27BA0F4D3DBDB397470D12172 BFDDD28642824F8118EF77909B67A5C12229118F",
+          "command_snippet": "ENV GPG_KEYS=1729F83938DA44E27BA0F4D3DBDB397...",
+          "command_all": "ENV GPG_KEYS=1729F83938DA44E27BA0F4D3DBDB397470D12172 BFDDD28642824F8118EF77909B67A5C12229118F"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-08-04T22:19:02Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_VERSION=8.0.22",
+          "command_snippet": "ENV PHP_VERSION=8.0.22",
+          "command_all": "ENV PHP_VERSION=8.0.22"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-08-04T22:19:02Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_URL=https://www.php.net/distributions/php-8.0.22.tar.xz PHP_ASC_URL=https://www.php.net/distributions/php-8.0.22.tar.xz.asc",
+          "command_snippet": "ENV PHP_URL=https://www.php.net/distribution...",
+          "command_all": "ENV PHP_URL=https://www.php.net/distributions/php-8.0.22.tar.xz PHP_ASC_URL=https://www.php.net/distributions/php-8.0.22.tar.xz.asc"
+        },
+        {
+          "type": "ENV",
+          "time": "2022-08-04T22:19:02Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "PHP_SHA256=130937c0fa3050cd33d6c415402f6ccbf0682ae83eb8d39c91164224ddfe57f1",
+          "command_snippet": "ENV PHP_SHA256=130937c0fa3050cd33d6c415402f6...",
+          "command_all": "ENV PHP_SHA256=130937c0fa3050cd33d6c415402f6ccbf0682ae83eb8d39c91164224ddfe57f1"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-04T22:19:09Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 10829907,
+          "size_human": "11 MB",
+          "command_snippet": "RUN set -eux; \t\tapk add --no-cache --virtual...",
+          "command_all": "RUN set -eux; \t\tapk add --no-cache --virtual .fetch-deps gnupg; \t\tmkdir -p /usr/src; \tcd /usr/src; \t\tcurl -fsSL -o php.tar.xz \"$PHP_URL\"; \t\tif [ -n \"$PHP_SHA256\" ]; then \t\techo \"$PHP_SHA256 *php.tar.xz\" | sha256sum -c -; \tfi; \t\tif [ -n \"$PHP_ASC_URL\" ]; then \t\tcurl -fsSL -o php.tar.xz.asc \"$PHP_ASC_URL\"; \t\texport GNUPGHOME=\"$(mktemp -d)\"; \t\tfor key in $GPG_KEYS; do \t\t\tgpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\"; \t\tdone; \t\tgpg --batch --verify php.tar.xz.asc php.tar.xz; \t\tgpgconf --kill all; \t\trm -rf \"$GNUPGHOME\"; \tfi; \t\tapk del --no-network .fetch-deps",
+          "system_commands": [
+            "set -eux",
+            "apk add --no-cache --virtual .fetch-deps gnupg",
+            "mkdir -p /usr/src",
+            "cd /usr/src",
+            "curl -fsSL -o php.tar.xz \"$PHP_URL\"",
+            "if [ -n \"$PHP_SHA256\" ]",
+            "then echo \"$PHP_SHA256 *php.tar.xz\" | sha256sum -c -",
+            "fi",
+            "if [ -n \"$PHP_ASC_URL\" ]",
+            "then curl -fsSL -o php.tar.xz.asc \"$PHP_ASC_URL\"",
+            "export GNUPGHOME=\"$(mktemp -d)\"",
+            "for key in $GPG_KEYS",
+            "do gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\"",
+            "done",
+            "gpg --batch --verify php.tar.xz.asc php.tar.xz",
+            "gpgconf --kill all",
+            "rm -rf \"$GNUPGHOME\"",
+            "fi",
+            "apk del --no-network .fetch-deps"
+          ]
+        },
+        {
+          "type": "COPY",
+          "time": "2022-08-04T22:19:09Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 587,
+          "size_human": "587 B",
+          "params": "file:ce57c04b70896f77cc11eb2766417d8a1240fcffe5bba92179ec78c458844110 in /usr/local/bin/",
+          "command_snippet": "COPY file:ce57c04b70896f77cc11eb2766417d8a12...",
+          "command_all": "COPY file:ce57c04b70896f77cc11eb2766417d8a1240fcffe5bba92179ec78c458844110 /usr/local/bin/",
+          "target": "/usr/local/bin/",
+          "source_type": "file"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-04T22:23:05Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 64932154,
+          "size_human": "65 MB",
+          "command_snippet": "RUN set -eux; \tapk add --no-cache --virtual ...",
+          "command_all": "RUN set -eux; \tapk add --no-cache --virtual .build-deps \t\t$PHPIZE_DEPS \t\targon2-dev \t\tcoreutils \t\tcurl-dev \t\tgnu-libiconv-dev \t\tlibsodium-dev \t\tlibxml2-dev \t\tlinux-headers \t\toniguruma-dev \t\topenssl-dev \t\treadline-dev \t\tsqlite-dev \t; \t\trm -vf /usr/include/iconv.h; \t\texport \t\tCFLAGS=\"$PHP_CFLAGS\" \t\tCPPFLAGS=\"$PHP_CPPFLAGS\" \t\tLDFLAGS=\"$PHP_LDFLAGS\" \t; \tdocker-php-source extract; \tcd /usr/src/php; \tgnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\"; \t./configure \t\t--build=\"$gnuArch\" \t\t--with-config-file-path=\"$PHP_INI_DIR\" \t\t--with-config-file-scan-dir=\"$PHP_INI_DIR/conf.d\" \t\t\t\t--enable-option-checking=fatal \t\t\t\t--with-mhash \t\t\t\t--with-pic \t\t\t\t--enable-ftp \t\t--enable-mbstring \t\t--enable-mysqlnd \t\t--with-password-argon2 \t\t--with-sodium=shared \t\t--with-pdo-sqlite=/usr \t\t--with-sqlite3=/usr \t\t\t\t--with-curl \t\t--with-iconv=/usr \t\t--with-openssl \t\t--with-readline \t\t--with-zlib \t\t\t\t--enable-phpdbg \t\t--enable-phpdbg-readline \t\t\t\t--with-pear \t\t\t\t$(test \"$gnuArch\" = 's390x-linux-musl' && \\\n\techo '--without-pcre-jit') \t; \tmake -j \"$(nproc)\"; \tfind -type f -name '*.a' -delete; \tmake install; \tfind \t\t/usr/local \t\t-type f \t\t-perm '/0111' \t\t-exec sh -euxc ' \t\t\tstrip --strip-all \"$@\" || : \t\t' -- '{}' + \t; \tmake clean; \t\tcp -v php.ini-* \"$PHP_INI_DIR/\"; \t\tcd /; \tdocker-php-source delete; \t\trunDeps=\"$( \t\tscanelf --needed --nobanner --format '%n#p' --recursive /usr/local \t\t\t| tr ',' '\\n' \t\t\t| sort -u \t\t\t| awk 'system(\"[ -e /usr/local/lib/\" $1 \" ]\") == 0 { next } { print \"so:\" $1 }' \t)\"; \tapk add --no-cache $runDeps; \t\tapk del --no-network .build-deps; \t\tpecl update-channels; \trm -rf /tmp/pear ~/.pearrc; \t\tphp --version",
+          "system_commands": [
+            "set -eux; apk add --no-cache --virtual .build-deps $PHPIZE_DEPS argon2-dev coreutils curl-dev gnu-libiconv-dev libsodium-dev libxml2-dev linux-headers oniguruma-dev openssl-dev readline-dev sqlite-dev ; rm -vf /usr/include/iconv.h; export CFLAGS=\"$PHP_CFLAGS\" CPPFLAGS=\"$PHP_CPPFLAGS\" LDFLAGS=\"$PHP_LDFLAGS\" ; docker-php-source extract; cd /usr/src/php; gnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\"; ./configure --build=\"$gnuArch\" --with-config-file-path=\"$PHP_INI_DIR\" --with-config-file-scan-dir=\"$PHP_INI_DIR/conf.d\" --enable-option-checking=fatal --with-mhash --with-pic --enable-ftp --enable-mbstring --enable-mysqlnd --with-password-argon2 --with-sodium=shared --with-pdo-sqlite=/usr --with-sqlite3=/usr --with-curl --with-iconv=/usr --with-openssl --with-readline --with-zlib --enable-phpdbg --enable-phpdbg-readline --with-pear $(test \"$gnuArch\" = 's390x-linux-musl'",
+            "echo '--without-pcre-jit') ; make -j \"$(nproc)\"; find -type f -name '*.a' -delete; make install; find /usr/local -type f -perm '/0111' -exec sh -euxc ' strip --strip-all \"$@\" || : ' -- '{}' + ; make clean; cp -v php.ini-* \"$PHP_INI_DIR/\"; cd /; docker-php-source delete; runDeps=\"$( scanelf --needed --nobanner --format '%n#p' --recursive /usr/local | tr ',' 'n' | sort -u | awk 'system(\"[ -e /usr/local/lib/\" $1 \" ]\") == 0 { next } { print \"so:\" $1 }' )\"; apk add --no-cache $runDeps; apk del --no-network .build-deps; pecl update-channels; rm -rf /tmp/pear ~/.pearrc; php --version"
+          ]
+        },
+        {
+          "type": "COPY",
+          "time": "2022-08-04T22:23:06Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 7199,
+          "size_human": "7.2 kB",
+          "params": "multi:6edd033b037aa2d7697fc3b9f82c2f162146c1920a0c6d25a165dc56783204db in /usr/local/bin/",
+          "command_snippet": "COPY multi:6edd033b037aa2d7697fc3b9f82c2f162...",
+          "command_all": "COPY multi:6edd033b037aa2d7697fc3b9f82c2f162146c1920a0c6d25a165dc56783204db /usr/local/bin/",
+          "target": "/usr/local/bin/",
+          "source_type": "multi"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-04T22:23:07Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 50978,
+          "size_human": "51 kB",
+          "command_snippet": "RUN docker-php-ext-enable sodium",
+          "command_all": "RUN docker-php-ext-enable sodium",
+          "system_commands": [
+            "docker-php-ext-enable sodium"
+          ]
+        },
+        {
+          "type": "ENTRYPOINT",
+          "time": "2022-08-04T22:23:07Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"docker-php-entrypoint\"]\n",
+          "command_snippet": "ENTRYPOINT [\"docker-php-entrypoint\"]\n",
+          "command_all": "ENTRYPOINT [\"docker-php-entrypoint\"]\n"
+        },
+        {
+          "type": "CMD",
+          "time": "2022-08-04T22:23:07Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"php\",\"-a\"]\n",
+          "command_snippet": "CMD [\"php\",\"-a\"]\n",
+          "command_all": "CMD [\"php\",\"-a\"]\n"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-05T12:01:35Z",
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 2722254,
+          "size_human": "2.7 MB",
+          "command_snippet": "RUN [\"COPY\",\"/usr/bin/composer\",\"/usr/bin/co...",
+          "command_all": "RUN [\"COPY\",\"/usr/bin/composer\",\"/usr/bin/composer\"]",
+          "system_commands": [
+            "[\"COPY\",\"/usr/bin/composer\",\"/usr/bin/composer\"]"
+          ],
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-05T12:01:50Z",
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 147297530,
+          "size_human": "147 MB",
+          "command_snippet": "RUN [\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--upd...",
+          "command_all": "RUN [\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--update\",\"--no-cache\",\"libzip-dev\",\"libpng-dev\",\"libjpeg-turbo-dev\",\"freetype-dev\",\"unzip\",\"git\",\"aws-cli\",\"jq\",\"rsync\",\"openssh\"]",
+          "system_commands": [
+            "[\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--update\",\"--no-cache\",\"libzip-dev\",\"libpng-dev\",\"libjpeg-turbo-dev\",\"freetype-dev\",\"unzip\",\"git\",\"aws-cli\",\"jq\",\"rsync\",\"openssh\"]"
+          ],
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-05T12:06:12Z",
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 9606068,
+          "size_human": "9.6 MB",
+          "command_snippet": "RUN [\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--no-...",
+          "command_all": "RUN [\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--no-cache\",\"--update\",\"--virtual\",\"buildDeps\",\"autoconf\",\"gcc\",\"make\",\"g++\",\"zlib-dev\",\"&&\",\"docker-php-ext-configure\",\"gd\",\"--with-freetype\",\"--with-jpeg\",\"&&\",\"docker-php-ext-install\",\"gd\",\"&&\",\"pecl\",\"install\",\"igbinary\",\"&&\",\"pecl\",\"install\",\"redis\",\"&&\",\"docker-php-ext-install\",\"-j$(nproc)\",\"zip\",\"&&\",\"docker-php-ext-install\",\"-j$(nproc)\",\"pdo_mysql\",\"&&\",\"docker-php-ext-install\",\"-j$(nproc)\",\"opcache\",\"&&\",\"docker-php-ext-enable\",\"igbinary\",\"&&\",\"docker-php-ext-enable\",\"redis\",\"&&\",\"apk\",\"del\",\"buildDeps\"]",
+          "system_commands": [
+            "[\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--no-cache\",\"--update\",\"--virtual\",\"buildDeps\",\"autoconf\",\"gcc\",\"make\",\"g++\",\"zlib-dev\",\"",
+            "\",\"docker-php-ext-configure\",\"gd\",\"--with-freetype\",\"--with-jpeg\",\"",
+            "\",\"docker-php-ext-install\",\"gd\",\"",
+            "\",\"pecl\",\"install\",\"igbinary\",\"",
+            "\",\"pecl\",\"install\",\"redis\",\"",
+            "\",\"docker-php-ext-install\",\"-j$(nproc)\",\"zip\",\"",
+            "\",\"docker-php-ext-install\",\"-j$(nproc)\",\"pdo_mysql\",\"",
+            "\",\"docker-php-ext-install\",\"-j$(nproc)\",\"opcache\",\"",
+            "\",\"docker-php-ext-enable\",\"igbinary\",\"",
+            "\",\"docker-php-ext-enable\",\"redis\",\"",
+            "\",\"apk\",\"del\",\"buildDeps\"]"
+          ],
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "type": "RUN",
+          "time": "2022-08-05T12:06:12Z",
+          "is_last_instruction": true,
+          "is_nop": false,
+          "is_exec_form": true,
+          "local_image_exists": true,
+          "layer_index": 0,
+          "size": 0,
+          "command_snippet": "RUN [\"WORKDIR\",\"/var/www/app\"]",
+          "command_all": "RUN [\"WORKDIR\",\"/var/www/app\"]",
+          "system_commands": [
+            "[\"WORKDIR\",\"/var/www/app\"]"
+          ],
+          "comment": "buildkit.dockerfile.v0",
+          "raw_tags": [
+            "oniki/php-build:latest"
+          ]
+        }
+      ]
+    }
+  ]
+}
