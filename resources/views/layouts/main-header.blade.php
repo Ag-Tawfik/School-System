@@ -34,9 +34,12 @@ header start-->
               @if (App::getLocale() == 'ar')
               {{ LaravelLocalization::getCurrentLocaleName() }}
              <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
-              @else
+              @elseif (App::getLocale() == 'en')
               {{ LaravelLocalization::getCurrentLocaleName() }}
               <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
+              @else
+              {{ LaravelLocalization::getCurrentLocaleName() }}
+              <img src="{{ URL::asset('assets/images/flags/TR.png') }}" alt="">
               @endif
               </button>
             <div class="dropdown-menu">
