@@ -1,85 +1,61 @@
-version: "3.9"
-
-x-restart-policy: &restart-policy
-    restart: always
-
+version: '3.8'
 services:
-    nginx:
-        <<: *restart-policy
-        image: nginx:1.19
-        ports:
-            - "${HTTP_PORT}:80"
-        volumes:
-            - ./:/var/www/app
-            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-            - ./docker/nginx/conf.d/app.local.conf:/etc/nginx/conf.d/default.conf:ro
-        depends_on:
-            - php
-
-    php:
-        <<: *restart-policy
+    
+    # Application
+    app:
         build:
-            context: ./docker/images/php-fpm
-        user: "${UID}"
+            context: .
+            dockerfile: app.dockerfile
+        working_dir: /var/www
         volumes:
-            - ./:/var/www/app
+            - ./:/var/www
         depends_on:
-            - redis
-            - mysql
-        labels:
-            ofelia.enabled: "true"
-            ofelia.job-exec.hnn-laravel-schedule.schedule: "0 * * * * *"
-            ofelia.job-exec.hnn-laravel-schedule.command: "php artisan schedule:run --verbose --no-interaction"
-
-    redis:
-        <<: *restart-policy
-        image: redis:6.2
+            - "database"
+    # Web Server
+    web:
+        build:
+            context: .
+            dockerfile: web.dockerfile
+        working_dir: /var/www
         volumes:
-            - redis-data:/data
-
-    ofelia:
-        <<: *restart-policy
-        image: mcuadros/ofelia:latest
-        command: daemon --docker
+            - ./:/var/www
         depends_on:
-            - php
-        volumes:
-            - ${DOCKER_SOCKET}:/var/run/docker.sock:ro
-
-    mysql:
-        <<: *restart-policy
-        image: mysql:8
-        env_file: ./docker/mysql/.env
-        cap_add:
-            - SYS_NICE
+            - "app"
         ports:
-            - "${MYSQL_PORT}:3306"
+            - 80:80
+    # Database
+    database:
+        image: mysql:8.0
         volumes:
-            - mysql-data:/var/lib/mysql
-            - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-        tmpfs:
-            - /tmp
-
+            - dbdata:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        ports:
+            - 33061:3306
+    # Database management
     pma:
-        <<: *restart-policy
         image: phpmyadmin:5.1
         environment:
             - PMA_ARBITRARY=1
-            - PMA_HOST=mysql
-            - PMA_USER=root
-            - PMA_PASSWORD=root
-            - PMA_PORT=${MYSQL_PORT}
+            - PMA_HOST=${DB_HOST}
+            - PMA_USER=${DB_USERNAME}
+            - PMA_PASSWORD=${DB_PASSWORD}
+            - PMA_PORT=${DB_PORT}
         depends_on:
-            - mysql
+            - database
         ports:
-            - "${PMA_PORT}:80"
-
+            - 8888:80
+    # Mailing Server
     mailhog:
-        <<: *restart-policy
-        image: mailhog/mailhog:v1.0.1
+        image: mailhog/mailhog
+        logging:
+            driver: 'none'
         ports:
-            - "${MAILHOG_PORT}:8025"
+            - 1025:1025 
+            - 8025:8025 
 
 volumes:
-    mysql-data:
-    redis-data:
+    dbdata:
