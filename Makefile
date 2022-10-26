@@ -1,5 +1,5 @@
 docker_compose = docker-compose -f docker-compose.yml
-php_container = php
+php_container = app
 
 up:
 	$(docker_compose) -f docker-compose.yml up --remove-orphans

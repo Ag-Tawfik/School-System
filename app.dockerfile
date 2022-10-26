@@ -1,17 +1,25 @@
-FROM php:8.1-cli-alpine
+FROM php:7.4-fpm-alpine
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-RUN apk add --update --no-cache libzip-dev \
+# RUN apt-get update && apt-get install -y  \
+#     libmagickwand-dev \
+#     --no-install-recommends \
+#     && pecl install imagick \
+#     && docker-php-ext-enable imagick \
+#     && docker-php-ext-install pdo_mysql
+
+RUN apk add --update --no-cache libzip-dev icu-dev \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
     unzip \
-    supervisor \
     git
 
 RUN apk add --no-cache --update --virtual buildDeps autoconf gcc make g++ zlib-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl \
+    && docker-php-ext-configure gd \
     && docker-php-ext-install gd \
     && pecl install igbinary \
     && pecl install redis \
@@ -22,11 +30,4 @@ RUN apk add --no-cache --update --virtual buildDeps autoconf gcc make g++ zlib-d
     && docker-php-ext-enable redis \
     && apk del buildDeps
 
-WORKDIR /var/www/app
-
-RUN mkdir -p /var/log/supervisor
-RUN chmod 777 /var/log/supervisor
-
-COPY supervisord.conf /etc/supervisord.conf
-
-CMD ["/usr/bin/supervisord"]
+RUN echo memory_limit = -1 >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
