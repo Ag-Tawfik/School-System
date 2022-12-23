@@ -1,10 +1,10 @@
-docker_compose = docker-compose -f docker-compose.yml
+docker_compose = docker-compose -f docker-compose.yaml
 php_container = app
 
 up:
-	$(docker_compose) -f docker-compose.yml up --remove-orphans
+	$(docker_compose) -f docker-compose.yaml up --remove-orphans
 upd:
-	$(docker_compose) -f docker-compose.yml up -d --remove-orphans
+	$(docker_compose) -f docker-compose.yaml up -d --remove-orphans
 down:
 	$(docker_compose) down
 bashroot:
