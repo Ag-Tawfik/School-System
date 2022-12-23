@@ -44,7 +44,7 @@
                                                 <td>{{ $loop->index + 1 }}</td>
                                                 <td>{{ $student->name }}</td>
                                                 <td>{{ $student->email }}</td>
-                                                <td>{{ $student->gender()->name }}</td>
+                                                <td>{{ $student->gender->name }}</td>
                                                 <td>{{ $student->grade->name }}</td>
                                                 <td>{{ $student->classroom->name }}</td>
                                                 <td>{{ $student->section->name }}</td>

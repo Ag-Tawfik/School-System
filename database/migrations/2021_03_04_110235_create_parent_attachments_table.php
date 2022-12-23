@@ -16,7 +16,7 @@ class CreateParentAttachmentsTable extends Migration
         Schema::create('parent_attachments', function (Blueprint $table) {
             $table->id();
             $table->string('file_name')->nullable();
-            $table->foreignId('parent_id')->constrained('the_parents');
+            $table->foreignId('parent_id')->constrained('parents');
             $table->timestamps();
         });
     }

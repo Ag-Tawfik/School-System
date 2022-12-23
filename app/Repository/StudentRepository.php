@@ -66,6 +66,7 @@ class StudentRepository implements StudentRepositoryInterface
         $data['genders'] = Gender::all();
         $data['nationalities'] = Nationalitie::all();
         $data['bloodtypes'] = BloodType::all();
+        $data['classrooms'] = Classroom::all();
         return view('pages.Students.add', $data);
     }
 

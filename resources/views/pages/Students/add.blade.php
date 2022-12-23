@@ -73,8 +73,8 @@
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="gender_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
-                                    @foreach ($Genders as $Gender)
-                                        <option value="{{ $Gender->id }}">{{ $Gender->Name }}</option>
+                                    @foreach ($genders as $gender)
+                                        <option value="{{ $gender->id }}">{{ $gender->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -86,8 +86,8 @@
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="nationalitie_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
-                                    @foreach ($nationals as $nal)
-                                        <option value="{{ $nal->id }}">{{ $nal->Name }}</option>
+                                    @foreach ($nationalities as $nationalitie)
+                                        <option value="{{ $nationalitie->id }}">{{ $nationalitie->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -98,8 +98,8 @@
                                 <label for="bg_id">{{ trans('Students_trans.blood_type') }} : </label>
                                 <select class="custom-select mr-sm-2" name="blood_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
-                                    @foreach ($bloods as $bg)
-                                        <option value="{{ $bg->id }}">{{ $bg->Name }}</option>
+                                    @foreach ($bloodtypes as $bloodtype)
+                                        <option value="{{ $bloodtype->id }}">{{ $bloodtype->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -124,8 +124,8 @@
                                         class="text-danger">*</span></label>
                                 <select class="custom-select mr-sm-2" name="grade_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
-                                    @foreach ($classroms as $classrom)
-                                        <option value="{{ $classrom->id }}">{{ $classrom->name }}</option>
+                                    @foreach ($classrooms as $classroom)
+                                        <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -157,7 +157,7 @@
                                 <select class="custom-select mr-sm-2" name="parent_id">
                                     <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
                                     @foreach ($parents as $parent)
-                                        <option value="{{ $parent->id }}">{{ $parent->Name_Father }}</option>
+                                        <option value="{{ $parent->id }}">{{ $parent->fatherName }}</option>
                                     @endforeach
                                 </select>
                             </div>

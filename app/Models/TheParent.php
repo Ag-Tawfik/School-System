@@ -10,11 +10,13 @@ class TheParent extends Model
     use HasTranslations;
 
     public $translatable = [
-        'Name_Father',
-        'Job_Father',
-        'Name_Mother',
-        'Job_Mother',
+        'fatherName',
+        'fatherJobTitle',
+        'motherName',
+        'motherJobTitle',
     ];
+
+    public $table = 'parents';
 
     protected $guarded = [];
 }
