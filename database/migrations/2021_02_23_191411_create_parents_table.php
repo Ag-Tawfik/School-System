@@ -18,7 +18,7 @@ class CreateParentsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
-            //Fatherinformation
+            //Father information
             $table->string('fatherName');
             $table->string('fatherNationalID');
             $table->string('fatherPassportID');
@@ -40,7 +40,6 @@ class CreateParentsTable extends Migration
             $table->foreignId('motherReligion_id')->constrained('religions')->onDelete('cascade');
             $table->string('motherAddress');
             $table->timestamps();
-
         });
     }
 
