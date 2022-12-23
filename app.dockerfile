@@ -2,14 +2,7 @@ FROM php:7.4-fpm-alpine
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# RUN apt-get update && apt-get install -y  \
-#     libmagickwand-dev \
-#     --no-install-recommends \
-#     && pecl install imagick \
-#     && docker-php-ext-enable imagick \
-#     && docker-php-ext-install pdo_mysql
-
-RUN apk add --update --no-cache libzip-dev icu-dev \
+RUN apk add --update --no-cache libzip-dev \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
@@ -17,9 +10,7 @@ RUN apk add --update --no-cache libzip-dev icu-dev \
     git
 
 RUN apk add --no-cache --update --virtual buildDeps autoconf gcc make g++ zlib-dev \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install intl \
-    && docker-php-ext-configure gd \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
     && pecl install igbinary \
     && pecl install redis \
@@ -30,4 +21,4 @@ RUN apk add --no-cache --update --virtual buildDeps autoconf gcc make g++ zlib-d
     && docker-php-ext-enable redis \
     && apk del buildDeps
 
-RUN echo memory_limit = -1 >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+WORKDIR /var/www/app
