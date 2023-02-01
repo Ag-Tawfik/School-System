@@ -2,7 +2,7 @@ FROM php:7.4-fpm-alpine
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-RUN apk add --update --no-cache libzip-dev \
+RUN apk add --update --no-cache libzip-dev icu-dev \
     libpng-dev \
     libjpeg-turbo-dev \
     freetype-dev \
@@ -10,6 +10,8 @@ RUN apk add --update --no-cache libzip-dev \
     git
 
 RUN apk add --no-cache --update --virtual buildDeps autoconf gcc make g++ zlib-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
     && pecl install igbinary \
@@ -20,5 +22,7 @@ RUN apk add --no-cache --update --virtual buildDeps autoconf gcc make g++ zlib-d
     && docker-php-ext-enable igbinary \
     && docker-php-ext-enable redis \
     && apk del buildDeps
+
+RUN echo memory_limit = -1 >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 
 WORKDIR /var/www/app
