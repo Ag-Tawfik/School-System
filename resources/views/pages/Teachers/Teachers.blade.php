@@ -38,27 +38,27 @@
                                     </thead>
                                     <tbody>
                                         <?php $i = 0; ?>
-                                        @foreach ($Teachers as $Teacher)
+                                        @foreach ($teachers as $teacher)
                                             <tr>
                                                 <?php $i++; ?>
                                                 <td>{{ $i }}</td>
-                                                <td>{{ $Teacher->name }}</td>
-                                                <td>{{ $Teacher->genders->name }}</td>
-                                                <td>{{ $Teacher->joining_date }}</td>
-                                                <td>{{ $Teacher->specializations->name }}</td>
+                                                <td>{{ $teacher->name }}</td>
+                                                <td>{{ $teacher->genders->name }}</td>
+                                                <td>{{ $teacher->joining_date }}</td>
+                                                <td>{{ $teacher->specializations->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('Teachers.edit', $Teacher->id) }}"
+                                                    <a href="{{ route('Teachers.edit', $teacher->id) }}"
                                                         class="btn btn-info btn-sm" role="button"
                                                         aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
-                                                        data-target="#delete_Teacher{{ $Teacher->id }}"
+                                                        data-target="#delete_Teacher{{ $teacher->id }}"
                                                         title="{{ trans('Grades_trans.Delete') }}"><i
                                                             class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
 
-                                            <div class="modal fade" id="delete_Teacher{{ $Teacher->id }}"
+                                            <div class="modal fade" id="delete_Teacher{{ $teacher->id }}"
                                                 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -79,7 +79,7 @@
                                                             <div class="modal-body">
                                                                 <p> {{ trans('My_Classes_trans.Warning_Grade') }}</p>
                                                                 <input type="hidden" name="id"
-                                                                    value="{{ $Teacher->id }}">
+                                                                    value="{{ $teacher->id }}">
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="modal-footer">
