@@ -159,7 +159,7 @@ class AddParent extends Component
         $this->show_table = false;
         $this->updateMode = true;
         $parents = TheParent::where('id', $id)->first();
-        $this->Parent_id = $id;
+        $this->parent_id = $id;
         $this->email = $parents->email;
         $this->password = $parents->password;
         $this->fatherName = $parents->getTranslation('fatherName', 'ar');
@@ -203,8 +203,8 @@ class AddParent extends Component
 
     public function submitForm_edit()
     {
-        if ($this->Parent_id) {
-            $parent = TheParent::find($this->Parent_id);
+        if ($this->parent_id) {
+            $parent = TheParent::find($this->parent_id);
             $parent->update([
                 'fatherPassportID' => $this->fatherPassportID,
                 'fatherNationalID' => $this->fatherNationalID,
