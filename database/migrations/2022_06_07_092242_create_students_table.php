@@ -28,6 +28,8 @@ class CreateStudentsTable extends Migration
             $table->foreignId('parent_id')->constrained('parents')->onDelete('cascade');
             $table->string('academic_year');
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 
