@@ -36,7 +36,7 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="inputState">{{trans('Students_trans.Grade')}}</label>
-                                <select class="custom-select mr-sm-2" name="Grade_id" required>
+                                <select class="custom-select mr-sm-2" name="grade_id" required>
                                     <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                     @foreach($grades as $grade)
                                         <option value="{{$grade->id}}">{{$grade->name}}</option>
@@ -46,7 +46,7 @@
                             <div class="form-group col">
                                 <label for="Classroom_id">{{trans('Students_trans.classrooms')}} : <span
                                         class="text-danger">*</span></label>
-                                <select class="custom-select mr-sm-2" name="Classroom_id" required>
+                                <select class="custom-select mr-sm-2" name="classroom_id" required>
 
                                 </select>
                             </div>
@@ -81,7 +81,7 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="inputState">{{trans('Students_trans.Grade')}}</label>
-                                <select class="custom-select mr-sm-2" name="Grade_id_new" >
+                                <select class="custom-select mr-sm-2" name="grade_id_new" >
                                     <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                     @foreach($grades as $grade)
                                         <option value="{{$grade->id}}">{{$grade->name}}</option>
@@ -91,7 +91,7 @@
                             <div class="form-group col">
                                 <label for="Classroom_id">{{trans('Students_trans.classrooms')}}: <span
                                         class="text-danger">*</span></label>
-                                <select class="custom-select mr-sm-2" name="Classroom_id_new" >
+                                <select class="custom-select mr-sm-2" name="classroom_id_new" >
 
                                 </select>
                             </div>

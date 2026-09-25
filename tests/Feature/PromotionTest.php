@@ -32,16 +32,13 @@ class PromotionTest extends TestCase
             'grade_id_new' => $to->grade_id,
             'classroom_id_new' => $to->class_id,
             'section_id_new' => $to->id,
+            'academic_year' => '2025',
+            'academic_year_new' => '2026',
         ]);
     }
 
     public function test_promotion_moves_every_student_in_the_section(): void
     {
-        $this->markTestSkipped(
-            'Known bug: StudentPromotionRepository::store() never sets academic_year or academic_year_new, '
-            . 'which are NOT NULL, so every promotion fails with SQL error 1364 and nothing moves.'
-        );
-
         $from = $this->createSection($this->createClassroom($this->createGrade('One', 'واحد')));
         $to = $this->createSection($this->createClassroom($this->createGrade('Two', 'اثنان')));
         $a = $this->createStudent($from);
@@ -54,8 +51,11 @@ class PromotionTest extends TestCase
             $this->assertEquals($to->grade_id, $student->grade_id);
             $this->assertEquals($to->class_id, $student->classroom_id);
             $this->assertEquals($to->id, $student->section_id);
+            $this->assertSame('2026', $student->academic_year);
         }
         $this->assertSame(2, Promotion::count());
+        $this->assertSame(['2025'], Promotion::pluck('academic_year')->unique()->values()->all());
+        $this->assertSame(['2026'], Promotion::pluck('academic_year_new')->unique()->values()->all());
     }
 
     public function test_promotion_from_an_empty_section_changes_nothing(): void
@@ -68,11 +68,33 @@ class PromotionTest extends TestCase
         $this->assertSame(0, Promotion::count());
     }
 
+    public function test_promotion_requires_both_academic_years(): void
+    {
+        $from = $this->createSection($this->createClassroom($this->createGrade('One', 'واحد')));
+        $this->createStudent($from);
+
+        $this->post($this->url('Promotion'), [
+            'grade_id' => $from->grade_id, 'classroom_id' => $from->class_id, 'section_id' => $from->id,
+        ])->assertSessionHasErrors(['academic_year', 'grade_id_new', 'academic_year_new']);
+
+        $this->assertSame(0, Promotion::count());
+    }
+
+    // The shared dropdown script fills selects by these exact (case-sensitive) names.
+    public function test_promotion_form_uses_the_names_the_dropdown_script_expects(): void
+    {
+        $this->get($this->url('Promotion'))
+            ->assertOk()
+            ->assertSee('name="grade_id"', false)
+            ->assertSee('name="classroom_id"', false)
+            ->assertSee('name="grade_id_new"', false)
+            ->assertSee('name="classroom_id_new"', false);
+    }
+
     public function test_revert_all_puts_every_student_back(): void
     {
         $from = $this->createSection($this->createClassroom($this->createGrade('One', 'واحد')));
         $to = $this->createSection($this->createClassroom($this->createGrade('Two', 'اثنان')));
-        // Promoted state built directly, since promoting through the app is broken (see above).
         $a = $this->createStudent($to);
         $b = $this->createStudent($to);
         foreach ([$a, $b] as $student) {

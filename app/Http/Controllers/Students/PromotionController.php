@@ -29,6 +29,17 @@ class PromotionController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'grade_id' => 'required|integer',
+            'classroom_id' => 'required|integer',
+            'section_id' => 'required|integer',
+            'academic_year' => 'required',
+            'grade_id_new' => 'required|integer',
+            'classroom_id_new' => 'required|integer',
+            'section_id_new' => 'required|integer',
+            'academic_year_new' => 'required',
+        ]);
+
         return $this->promotion->store($request);
     }
 

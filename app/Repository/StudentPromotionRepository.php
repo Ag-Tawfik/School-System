@@ -38,6 +38,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                         'grade_id' => $request->grade_id_new,
                         'classroom_id' => $request->classroom_id_new,
                         'section_id' => $request->section_id_new,
+                        'academic_year' => $request->academic_year_new,
                     ]);
                 // insert in to promotions
                 Promotion::updateOrCreate([
@@ -48,6 +49,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     'to_grade' => $request->grade_id_new,
                     'to_classroom' => $request->classroom_id_new,
                     'to_section' => $request->section_id_new,
+                    'academic_year' => $request->academic_year,
+                    'academic_year_new' => $request->academic_year_new,
                 ]);
             }
             DB::commit();
