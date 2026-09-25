@@ -1,0 +1,42 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_DATABASE: school_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -psecret"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Bump this with each step of the Laravel upgrade.
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: pdo_mysql, intl, gd, zip
+          coverage: none
+
+      - run: composer install --no-interaction --no-progress --prefer-dist
+
+      - run: vendor/bin/phpunit
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_USERNAME: root
+          DB_PASSWORD: secret
