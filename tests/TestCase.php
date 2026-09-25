@@ -7,8 +7,6 @@ use Mcamara\LaravelLocalization\LaravelLocalization;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
-
     /**
      * Locale prefix the localized routes are registered under.
      *
