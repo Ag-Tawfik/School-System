@@ -37,6 +37,8 @@ class StoreStudentsRequest extends FormRequest
             'section_id' => 'required',
             'parent_id' => 'required',
             'academic_year' => 'required',
+            'photos' => 'nullable|array',
+            'photos.*' => 'file|mimes:' . UploadStudentAttachmentRequest::ALLOWED_MIMES . '|max:' . UploadStudentAttachmentRequest::MAX_KB,
         ];
     }
 }

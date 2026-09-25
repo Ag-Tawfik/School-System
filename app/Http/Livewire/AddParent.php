@@ -8,6 +8,7 @@ use App\Models\ParentAttachment;
 use App\Models\Religion;
 use App\Models\BloodType;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -109,6 +110,11 @@ class AddParent extends Component
 
     public function submitForm()
     {
+        $this->validate([
+            'photos' => 'nullable|array',
+            'photos.*' => 'file|mimes:jpg,jpeg,png,gif,webp|max:5120',
+        ]);
+
         try {
             $parents = new TheParent();
             // Father INPUTS
@@ -139,10 +145,11 @@ class AddParent extends Component
 
             if (!empty($this->photos)) {
                 foreach ($this->photos as $photo) {
-                    $photo->storeAs($this->fatherNationalID, $photo->getClientOriginalName(), $disk = 'parent_attachments');
+                    // Never let client input (national ID, file name) pick the path on disk.
+                    $path = $photo->storeAs($parents->id, Str::uuid() . '.' . $photo->guessExtension(), 'parent_attachments');
                     ParentAttachment::create([
-                        'file_name' => $photo->getClientOriginalName(),
-                        'parent_id' => TheParent::latest()->first()->id,
+                        'file_name' => $path,
+                        'parent_id' => $parents->id,
                     ]);
                 }
             }
