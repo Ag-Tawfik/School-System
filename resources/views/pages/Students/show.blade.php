@@ -99,8 +99,6 @@
                                                         : <span class="text-danger">*</span></label>
                                                     <input type="file" accept="image/*" name="photos[]" multiple
                                                         required>
-                                                    <input type="hidden" name="student_name"
-                                                        value="{{ $Student->name }}">
                                                     <input type="hidden" name="student_id"
                                                         value="{{ $Student->id }}">
                                                 </div>
@@ -130,7 +128,7 @@
                                                     <td>{{ $attachment->created_at->diffForHumans() }}</td>
                                                     <td colspan="2">
                                                         <a class="btn btn-outline-info btn-sm"
-                                                            href="{{ url('Download_attachment') }}/{{ $attachment->imageable->name }}/{{ $attachment->filename }}"
+                                                            href="{{ route('Download_attachment', $attachment->id) }}"
                                                             role="button"><i class="fas fa-download"></i>&nbsp;
                                                             {{ trans('Students_trans.Download') }}</a>
 

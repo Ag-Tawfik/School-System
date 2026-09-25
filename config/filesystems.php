@@ -53,11 +53,11 @@ return [
             'root' => storage_path('app/parent_attachments'),
         ],
 
+        // Student attachments live outside public/ and are only served
+        // through the authenticated Download_attachment route.
         'upload_attachments' => [
             'driver' => 'local',
-            'root' => public_path('/'),
-            'url' => env('APP_URL') . '/storage',
-            'visibility' => 'public',
+            'root' => storage_path('app/student_attachments'),
         ],
 
         'public' => [
