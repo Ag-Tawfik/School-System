@@ -50,6 +50,15 @@ class TeacherTest extends TestCase
         $this->post($this->url('Teachers'), $this->payload())->assertSessionHasErrors('email');
     }
 
+    public function test_edit_page_shows_the_teacher(): void
+    {
+        $teacher = $this->createTeacher(['email' => 'edit.me@example.com']);
+
+        $this->get($this->url('Teachers/' . $teacher->id . '/edit'))
+            ->assertOk()
+            ->assertSee('edit.me@example.com');
+    }
+
     public function test_update_changes_details(): void
     {
         $teacher = $this->createTeacher();

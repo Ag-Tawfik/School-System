@@ -36,10 +36,9 @@ class GradeController extends Controller
         try {
             $request->validated();
             $grades = Grade::findOrFail($request->id);
-            $grades->update([
-                $grades->name = ['ar' => $request->name_en, 'en' => $request->name_ar],
-                $grades->notes = $request->notes,
-            ]);
+            $grades->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+            $grades->notes = $request->notes;
+            $grades->save();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Grades.index');
         } catch (\Exception $e) {
