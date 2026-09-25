@@ -14,6 +14,7 @@ use App\Models\TheParent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class StudentRepository implements StudentRepositoryInterface
 {
@@ -103,19 +104,8 @@ class StudentRepository implements StudentRepositoryInterface
             $students->academic_year = $request->academic_year;
             $students->save();
 
-            // insert img
             if ($request->hasfile('photos')) {
-                foreach ($request->file('photos') as $file) {
-                    $name = $file->getClientOriginalName();
-                    $file->storeAs('attachments/students/' . $students->name, $file->getClientOriginalName(), 'upload_attachments');
-
-                    // insert in image_table
-                    $images = new Image();
-                    $images->filename = $name;
-                    $images->imageable_id = $students->id;
-                    $images->imageable_type = 'App\Models\Student';
-                    $images->save();
-                }
+                $this->storeAttachments($students, $request->file('photos'));
             }
             DB::commit(); // insert data
             toastr()->success(trans('messages.success'));
@@ -142,33 +132,51 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Upload_attachment($request)
     {
-        foreach ($request->file('photos') as $file) {
-            $name = $file->getClientOriginalName();
-            $file->storeAs('attachments/students/' . $request->student_name, $file->getClientOriginalName(), 'upload_attachments');
-
-            // insert in image_table
-            $images = new image();
-            $images->filename = $name;
-            $images->imageable_id = $request->student_id;
-            $images->imageable_type = 'App\Models\Student';
-            $images->save();
-        }
+        $student = Student::findOrFail($request->student_id);
+        $this->storeAttachments($student, $request->file('photos'));
         toastr()->success(trans('messages.success'));
-        return redirect()->route('Students.show', $request->student_id);
+        return redirect()->route('Students.show', $student->id);
     }
 
-    public function Download_attachment($studentsname, $filename)
+    public function Download_attachment($id)
     {
-        return response()->download(public_path('attachments/students/' . $studentsname . '/' . $filename));
+        $attachment = $this->findStudentAttachment($id);
+        abort_unless($attachment->path && Storage::disk('upload_attachments')->exists($attachment->path), 404);
+        return Storage::disk('upload_attachments')->download($attachment->path, $attachment->filename);
     }
 
     public function Delete_attachment($request)
     {
-        // Delete img in server disk
-        Storage::disk('upload_attachments')->delete('attachments/students/' . $request->student_name . '/' . $request->filename);
-        // Delete in data
-        image::where('id', $request->id)->where('filename', $request->filename)->delete();
+        $attachment = $this->findStudentAttachment($request->id);
+        if ($attachment->path) {
+            Storage::disk('upload_attachments')->delete($attachment->path);
+        }
+        $attachment->delete();
         toastr()->error(trans('messages.Delete'));
-        return redirect()->route('Students.show', $request->student_id);
+        return redirect()->route('Students.show', $attachment->imageable_id);
+    }
+
+    private function findStudentAttachment($id)
+    {
+        return Image::where('imageable_type', Student::class)->findOrFail($id);
+    }
+
+    // Stored names are generated server-side; the client name is kept only as a display label.
+    private function storeAttachments(Student $student, array $files)
+    {
+        foreach ($files as $file) {
+            $path = $file->storeAs(
+                'students/' . $student->id,
+                Str::uuid() . '.' . $file->guessExtension(),
+                'upload_attachments'
+            );
+
+            $images = new Image();
+            $images->filename = Str::limit(basename($file->getClientOriginalName()), 200, '');
+            $images->path = $path;
+            $images->imageable_id = $student->id;
+            $images->imageable_type = Student::class;
+            $images->save();
+        }
     }
 }

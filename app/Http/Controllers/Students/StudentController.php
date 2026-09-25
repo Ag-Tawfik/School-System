@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentsRequest;
+use App\Http\Requests\UploadStudentAttachmentRequest;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -62,14 +63,14 @@ class StudentController extends Controller
         return $this->Student->Get_Sections($id);
     }
 
-    public function Upload_attachment(Request $request)
+    public function Upload_attachment(UploadStudentAttachmentRequest $request)
     {
         return $this->Student->Upload_attachment($request);
     }
 
-    public function Download_attachment($studentsname, $filename)
+    public function Download_attachment($id)
     {
-        return $this->Student->Download_attachment($studentsname, $filename);
+        return $this->Student->Download_attachment($id);
     }
 
     public function Delete_attachment(Request $request)
