@@ -18,7 +18,7 @@ class EnglishLocalizationTest extends TestCase
 
         $this->get($this->url('Grades'))
             ->assertOk()
-            ->assertSee('Primary')
-            ->assertDontSee('ابتدائي');
+            ->assertSee('<td>Primary</td>', false)
+            ->assertDontSee('<td>ابتدائي</td>', false);
     }
 }

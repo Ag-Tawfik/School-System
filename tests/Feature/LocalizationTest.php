@@ -20,7 +20,7 @@ class LocalizationTest extends TestCase
 
         $this->get($this->url('Grades'))
             ->assertOk()
-            ->assertSee('ابتدائي')
-            ->assertDontSee('Primary');
+            ->assertSee('<td>ابتدائي</td>', false)
+            ->assertDontSee('<td>Primary</td>', false);
     }
 }

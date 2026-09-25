@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Tests\Concerns\CreatesSchoolData;
 use Tests\TestCase;
 
-/**
- * Attachment upload, download and delete are covered with the upload fix,
- * which changes how and where those files are stored.
- */
 class StudentTest extends TestCase
 {
     use RefreshDatabase;

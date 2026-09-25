@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 /**
  * Uses only Livewire::test()->set()->call(), which works the same on
- * Livewire 2, 3 and 4. Parent attachments are covered with the upload fix.
+ * Livewire 2, 3 and 4. Attachments are in AttachmentTest.
  */
 class ParentFormTest extends TestCase
 {
