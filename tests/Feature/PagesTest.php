@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\Concerns\CreatesSchoolData;
 use Tests\TestCase;
 
@@ -15,7 +16,7 @@ class PagesTest extends TestCase
     use RefreshDatabase;
     use CreatesSchoolData;
 
-    public function pages(): array
+    public static function pages(): array
     {
         return [
             'dashboard' => ['dashboard'],
@@ -40,9 +41,7 @@ class PagesTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider pages
-     */
+    #[DataProvider('pages')]
     public function test_page_renders(string $path): void
     {
         if ($path === 'Teachers/{teacher}/edit') {

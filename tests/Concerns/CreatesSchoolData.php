@@ -14,7 +14,7 @@ use App\Models\Specialization;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\TheParent;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
