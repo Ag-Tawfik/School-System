@@ -26,13 +26,22 @@ class GraduationTest extends TestCase
         $stays = $this->createStudent($other);
 
         $this->post($this->url('Graduated'), [
-            'Grade_id' => $section->grade_id,
-            'Classroom_id' => $section->class_id,
+            'grade_id' => $section->grade_id,
+            'classroom_id' => $section->class_id,
             'section_id' => $section->id,
         ])->assertRedirect(route('Graduated.index'));
 
         $this->assertSoftDeleted('students', ['id' => $graduate->id]);
         $this->assertNotNull(Student::find($stays->id));
+    }
+
+    // The shared dropdown script fills selects by these exact (case-sensitive) names.
+    public function test_graduation_form_uses_the_names_the_dropdown_script_expects(): void
+    {
+        $this->get($this->url('Graduated/create'))
+            ->assertOk()
+            ->assertSee('name="grade_id"', false)
+            ->assertSee('name="classroom_id"', false);
     }
 
     public function test_restoring_a_graduate_brings_them_back(): void

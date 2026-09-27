@@ -40,11 +40,6 @@ class GradeTest extends TestCase
 
     public function test_update_changes_the_name(): void
     {
-        $this->markTestSkipped(
-            'Known bug: GradeController::update() writes name_en into ar and name_ar into en. '
-            . 'Un-skip once fixed.'
-        );
-
         $grade = $this->createGrade('Primary', 'ابتدائي');
 
         $this->patch($this->url('Grades/' . $grade->id), [
