@@ -7,6 +7,7 @@ use App\Models\Nationalitie;
 use App\Models\ParentAttachment;
 use App\Models\Religion;
 use App\Models\BloodType;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -36,6 +37,13 @@ class AddParent extends Component
         $motherPhoneNumber, $motherJobTitle, $motherJobTitle_en,
         $motherNationalty_id, $motherBloodType_id,
         $motherAddress, $motherReligion_id;
+
+    // Runs on every Livewire request, not just the first render: the
+    // component endpoint is not behind the route's admin check.
+    public function boot()
+    {
+        Gate::authorize('admin');
+    }
 
     public function updated($propertyName)
     {

@@ -38,13 +38,16 @@ class PagesTest extends TestCase
             'fees' => ['Fees'],
             'fee create' => ['Fees/create'],
             'fee edit' => ['Fees/{fee}/edit'],
+            'users' => ['Users'],
+            'user create' => ['Users/create'],
+            'user edit' => ['Users/{user}/edit'],
         ];
     }
 
     #[DataProvider('pages')]
     public function test_page_renders(string $path): void
     {
-        $this->signIn();
+        $user = $this->signIn();
         $section = $this->createSection($this->createClassroom($this->createGrade()));
         $teacher = $this->createTeacher();
         $section->teachers()->attach($teacher->id);
@@ -52,8 +55,8 @@ class PagesTest extends TestCase
         $fee = $this->createFee($section->classrooms);
 
         $path = str_replace(
-            ['{teacher}', '{student}', '{fee}'],
-            [$teacher->id, $student->id, $fee->id],
+            ['{teacher}', '{student}', '{fee}', '{user}'],
+            [$teacher->id, $student->id, $fee->id, $user->id],
             $path
         );
 

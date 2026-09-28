@@ -12,6 +12,7 @@ use App\Models\Section;
 use App\Models\Student;
 use App\Models\TheParent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -21,7 +22,7 @@ class StudentRepository implements StudentRepositoryInterface
 
     public function Get_Students()
     {
-        $students = Student::all();
+        $students = Student::visibleTo(auth()->user())->get();
         return view('pages.Students.index', compact('students'));
     }
 
@@ -127,6 +128,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function Show_Student($id)
     {
         $Student = Student::findOrFail($id);
+        Gate::authorize('view', $Student);
         return view('pages.Students.show', compact('Student'));
     }
 
@@ -141,6 +143,7 @@ class StudentRepository implements StudentRepositoryInterface
     public function Download_attachment($id)
     {
         $attachment = $this->findStudentAttachment($id);
+        Gate::authorize('view', Student::withTrashed()->findOrFail($attachment->imageable_id));
         abort_unless($attachment->path && Storage::disk('upload_attachments')->exists($attachment->path), 404);
         return Storage::disk('upload_attachments')->download($attachment->path, $attachment->filename);
     }

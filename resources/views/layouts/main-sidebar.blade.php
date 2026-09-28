@@ -15,6 +15,7 @@
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{trans('main_trans.Programname')}} </li>
 
+                    @can('admin')
                     <!-- Grades-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
@@ -56,6 +57,7 @@
                     </li>
 
 
+                    @endcan
                     <!-- students-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu"><i class="fas fa-user-graduate"></i>{{trans('main_trans.students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
@@ -63,11 +65,14 @@
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Student_information">{{trans('main_trans.Student_information')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
                                 <ul id="Student_information" class="collapse">
+                                    @can('admin')
                                     <li> <a href="{{route('Students.create')}}">{{trans('main_trans.add_student')}}</a></li>
+                                    @endcan
                                     <li> <a href="{{route('Students.index')}}">{{trans('main_trans.list_students')}}</a></li>
                                 </ul>
                             </li>
 
+                            @can('admin')
                             <li>
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Students_upgrade">{{trans('main_trans.Students_Promotions')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
                                 <ul id="Students_upgrade" class="collapse">
@@ -83,11 +88,13 @@
                                     <li> <a href="{{route('Graduated.index')}}">{{trans('main_trans.list_Graduate')}}</a> </li>
                                 </ul>
                             </li>
+                            @endcan
                         </ul>
                     </li>
 
 
 
+                    @can('admin')
                     <!-- Teachers-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Teachers-menu">
@@ -211,12 +218,12 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Users-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
+                            <li> <a href="{{route('Users.index')}}">{{trans('Users_trans.List_Users')}}</a> </li>
+                            <li> <a href="{{route('Users.create')}}">{{trans('Users_trans.Add_User')}}</a> </li>
                         </ul>
                     </li>
 
+                    @endcan
                 </ul>
             </div>
         </div>

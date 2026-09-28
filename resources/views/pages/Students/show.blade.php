@@ -88,6 +88,7 @@
 
                             <div class="tab-pane fade" id="profile-02" role="tabpanel" aria-labelledby="profile-02-tab">
                                 <div class="card card-statistics">
+                                    @can('admin')
                                     <div class="card-body">
                                         <form method="post" action="{{ route('Upload_attachment') }}"
                                             enctype="multipart/form-data">
@@ -109,6 +110,7 @@
                                             </button>
                                         </form>
                                     </div>
+                                    @endcan
                                     <br>
                                     <table class="table center-aligned-table mb-0 table table-hover"
                                         style="text-align:center">
@@ -132,15 +134,19 @@
                                                             role="button"><i class="fas fa-download"></i>&nbsp;
                                                             {{ trans('Students_trans.Download') }}</a>
 
+                                                        @can('admin')
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
                                                             data-toggle="modal"
                                                             data-target="#Delete_img{{ $attachment->id }}"
                                                             title="{{ trans('Grades_trans.Delete') }}">{{ trans('Students_trans.delete') }}
                                                         </button>
+                                                        @endcan
 
                                                     </td>
                                                 </tr>
-                                                @include('pages.Students.Delete_img')
+                                                @can('admin')
+                                                    @include('pages.Students.Delete_img')
+                                                @endcan
                                             @endforeach
                                         </tbody>
                                     </table>
