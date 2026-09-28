@@ -2,6 +2,7 @@
 
 namespace Tests\Concerns;
 
+use App\Enums\Role;
 use App\Models\BloodType;
 use App\Models\Classroom;
 use App\Models\Fee;
@@ -29,15 +30,21 @@ trait CreatesSchoolData
 {
     protected function signIn(): User
     {
-        $user = User::create([
-            'name' => 'Admin',
-            'email' => 'admin' . Str::random(6) . '@example.com',
-            'password' => Hash::make('password'),
-        ]);
+        $user = $this->createUser(Role::Admin);
 
         $this->actingAs($user);
 
         return $user;
+    }
+
+    protected function createUser(Role $role, array $overrides = []): User
+    {
+        return User::create(array_merge([
+            'name' => ucfirst($role->value),
+            'email' => $role->value . Str::random(6) . '@example.com',
+            'password' => Hash::make('password'),
+            'role' => $role,
+        ], $overrides));
     }
 
     protected function createGender(): Gender

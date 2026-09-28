@@ -21,8 +21,10 @@
                 <div class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
+                            @can('admin')
                             <a href="{{ route('Students.create') }}" class="btn btn-success btn-sm" role="button"
                                 aria-pressed="true">{{ trans('main_trans.add_student') }}</a><br><br>
+                            @endcan
                             <div class="table-responsive">
                                 <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                     data-page-length="50" style="text-align: center">
@@ -49,6 +51,7 @@
                                                 <td>{{ $student->classroom->name }}</td>
                                                 <td>{{ $student->section->name }}</td>
                                                 <td>
+                                                    @can('admin')
                                                     <a href="{{ route('Students.edit', $student->id) }}"
                                                         class="btn btn-info btn-sm" role="button"
                                                         aria-pressed="true"><i class="fa fa-edit"></i></a>
@@ -57,12 +60,15 @@
                                                         data-target="#Delete_Student{{ $student->id }}"
                                                         title="{{ trans('Grades_trans.Delete') }}"><i
                                                             class="fa fa-trash"></i></button>
+                                                    @endcan
                                                     <a href="{{ route('Students.show', $student->id) }}"
                                                         class="btn btn-warning btn-sm" role="button"
                                                         aria-pressed="true"><i class="far fa-eye"></i></a>
                                                 </td>
                                             </tr>
-                                            @include('pages.Students.Delete')
+                                            @can('admin')
+                                                @include('pages.Students.Delete')
+                                            @endcan
                                         @endforeach
                                 </table>
                             </div>

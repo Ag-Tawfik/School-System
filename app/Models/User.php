@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role', 'teacher_id', 'parent_id',
     ];
 
     /**
@@ -37,6 +39,32 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'role' => Role::class,
         ];
+    }
+
+    public function teacher(): BelongsTo
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function theparent(): BelongsTo
+    {
+        return $this->belongsTo(TheParent::class, 'parent_id');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === Role::Admin;
+    }
+
+    public function isTeacher(): bool
+    {
+        return $this->role === Role::Teacher;
+    }
+
+    public function isParent(): bool
+    {
+        return $this->role === Role::Parent;
     }
 }

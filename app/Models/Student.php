@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\morphMany;
@@ -52,5 +54,34 @@ class Student extends Model
     public function theparent(): belongsTo
     {
         return $this->belongsTo(TheParent::class, 'parent_id');
+    }
+
+    /**
+     * Limit the query to the students this user may see: every student for
+     * an admin, the students in their own sections for a teacher, their own
+     * children for a parent, and nothing for an account with no link.
+     */
+    #[Scope]
+    protected function visibleTo(Builder $query, User $user): void
+    {
+        if ($user->isAdmin()) {
+            return;
+        }
+
+        if ($user->isTeacher() && $user->teacher_id) {
+            $query->whereIn('section_id', function ($sections) use ($user) {
+                $sections->select('section_id')->from('teacher_section')->where('teacher_id', $user->teacher_id);
+            });
+
+            return;
+        }
+
+        if ($user->isParent() && $user->parent_id) {
+            $query->where('parent_id', $user->parent_id);
+
+            return;
+        }
+
+        $query->whereRaw('1 = 0');
     }
 }
