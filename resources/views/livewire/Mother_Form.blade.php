@@ -1,6 +1,4 @@
-@if ($currentStep != 2)
-    <div style="display: none" class="row setup-content" id="step-2">
-@endif
+<div class="setup-content" id="step-2" style="{{ $currentStep != 2 ? 'display: none' : '' }}">
 <div class="col-xs-12">
     <div class="col-md-12">
         <br>
@@ -8,14 +6,14 @@
         <div class="form-row">
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.motherName') }}</label>
-                <input type="text" wire:model="motherName" class="form-control">
+                <input type="text" wire:model.live="motherName" class="form-control">
                 @error('motherName')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.motherName_en') }}</label>
-                <input type="text" wire:model="motherName_en" class="form-control">
+                <input type="text" wire:model.live="motherName_en" class="form-control">
                 @error('motherName_en')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -25,14 +23,14 @@
         <div class="form-row">
             <div class="col-md-3">
                 <label for="title">{{ trans('Parent_trans.motherJobTitle') }}</label>
-                <input type="text" wire:model="motherJobTitle" class="form-control">
+                <input type="text" wire:model.live="motherJobTitle" class="form-control">
                 @error('motherJobTitle')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="col-md-3">
                 <label for="title">{{ trans('Parent_trans.motherJobTitle_en') }}</label>
-                <input type="text" wire:model="motherJobTitle_en" class="form-control">
+                <input type="text" wire:model.live="motherJobTitle_en" class="form-control">
                 @error('motherJobTitle_en')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -40,14 +38,14 @@
 
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.motherNationalID') }}</label>
-                <input type="text" wire:model="motherNationalID" class="form-control">
+                <input type="text" wire:model.live="motherNationalID" class="form-control">
                 @error('motherNationalID')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.motherPassportID') }}</label>
-                <input type="text" wire:model="motherPassportID" class="form-control">
+                <input type="text" wire:model.live="motherPassportID" class="form-control">
                 @error('motherPassportID')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -55,7 +53,7 @@
 
             <div class="col">
                 <label for="title">{{ trans('Parent_trans.motherPhoneNumber') }}</label>
-                <input type="text" wire:model="motherPhoneNumber" class="form-control">
+                <input type="text" wire:model.live="motherPhoneNumber" class="form-control">
                 @error('motherPhoneNumber')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -67,7 +65,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">{{ trans('Parent_trans.fatherNationalty_id') }}</label>
-                <select class="custom-select my-1 mr-sm-2" wire:model="motherNationalty_id">
+                <select class="custom-select my-1 mr-sm-2" wire:model.live="motherNationalty_id">
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($nationalities as $nationalty)
                         <option value="{{ $nationalty->id }}">{{ $nationalty->name }}</option>
@@ -79,7 +77,7 @@
             </div>
             <div class="form-group col">
                 <label for="inputState">{{ trans('Parent_trans.fatherBloodType_id') }}</label>
-                <select class="custom-select my-1 mr-sm-2" wire:model="motherBloodType_id">
+                <select class="custom-select my-1 mr-sm-2" wire:model.live="motherBloodType_id">
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($bloodTypes as $bloodType)
                         <option value="{{ $bloodType->id }}">{{ $bloodType->name }}</option>
@@ -91,7 +89,7 @@
             </div>
             <div class="form-group col">
                 <label for="inputZip">{{ trans('Parent_trans.fatherReligion_id') }}</label>
-                <select class="custom-select my-1 mr-sm-2" wire:model="motherReligion_id">
+                <select class="custom-select my-1 mr-sm-2" wire:model.live="motherReligion_id">
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($religions as $religion)
                         <option value="{{ $religion->id }}">{{ $religion->name }}</option>
@@ -105,7 +103,7 @@
 
         <div class="form-group">
             <label for="exampleFormControlTextarea1">{{ trans('Parent_trans.motherAddress') }}</label>
-            <textarea class="form-control" wire:model="motherAddress" id="exampleFormControlTextarea1" rows="4"></textarea>
+            <textarea class="form-control" wire:model.live="motherAddress" id="exampleFormControlTextarea1" rows="4"></textarea>
             @error('motherAddress')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror

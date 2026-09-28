@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\Classrooms\ClassroomController;
+use App\Http\Controllers\Grades\GradeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Sections\SectionController;
+use App\Http\Controllers\Students\FeesController;
+use App\Http\Controllers\Students\GraduatedController;
+use App\Http\Controllers\Students\PromotionController;
+use App\Http\Controllers\Students\StudentController;
+use App\Http\Controllers\Teachers\TeacherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -21,47 +30,37 @@ Route::group(
     function () {
 
         //==============================dashboard============================
-        Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
         //==============================dashboard============================
-        Route::group(['namespace' => 'Grades'], function () {
-            Route::resource('Grades', 'GradeController');
-        });
+        Route::resource('Grades', GradeController::class);
 
         //==============================Classrooms============================
-        Route::group(['namespace' => 'Classrooms'], function () {
-            Route::resource('Classrooms', 'ClassroomController');
-            Route::post('delete_all', 'ClassroomController@delete_all')->name('delete_all');
-            Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
-        });
+        Route::resource('Classrooms', ClassroomController::class);
+        Route::post('delete_all', [ClassroomController::class, 'delete_all'])->name('delete_all');
+        Route::post('Filter_Classes', [ClassroomController::class, 'Filter_Classes'])->name('Filter_Classes');
 
         //==============================Sections============================
 
-        Route::group(['namespace' => 'Sections'], function () {
-            Route::resource('Sections', 'SectionController');
-            Route::get('/classes/{id}', 'SectionController@getclasses');
-        });
+        Route::resource('Sections', SectionController::class);
+        Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
 
         //==============================parents============================
 
         Route::view('add_parent', 'livewire.show_Form');
 
         //==============================Teachers============================
-        Route::group(['namespace' => 'Teachers'], function () {
-            Route::resource('Teachers', 'TeacherController');
-        });
+        Route::resource('Teachers', TeacherController::class);
 
         //==============================Students============================
 
-        Route::group(['namespace' => 'Students'], function () {
-            Route::resource('Students', 'StudentController');
-            Route::resource('Graduated', 'GraduatedController');
-            Route::resource('Promotion', 'PromotionController');
-            Route::resource('Fees', 'FeesController');
-            Route::get('/Get_classrooms/{id}', 'StudentController@Get_classrooms');
-            Route::get('/Get_Sections/{id}', 'StudentController@Get_Sections');
-            Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
-            Route::get('Download_attachment/{id}', 'StudentController@Download_attachment')->name('Download_attachment');
-            Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
-        });
+        Route::resource('Students', StudentController::class);
+        Route::resource('Graduated', GraduatedController::class);
+        Route::resource('Promotion', PromotionController::class);
+        Route::resource('Fees', FeesController::class);
+        Route::get('/Get_classrooms/{id}', [StudentController::class, 'Get_classrooms']);
+        Route::get('/Get_Sections/{id}', [StudentController::class, 'Get_Sections']);
+        Route::post('Upload_attachment', [StudentController::class, 'Upload_attachment'])->name('Upload_attachment');
+        Route::get('Download_attachment/{id}', [StudentController::class, 'Download_attachment'])->name('Download_attachment');
+        Route::post('Delete_attachment', [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
     }
 );

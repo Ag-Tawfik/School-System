@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\AddParent;
+use App\Livewire\AddParent;
 use App\Models\Image;
 use App\Models\ParentAttachment;
 use App\Models\Student;

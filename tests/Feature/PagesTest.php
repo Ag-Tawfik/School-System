@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\Concerns\CreatesSchoolData;
 use Tests\TestCase;
 
@@ -15,7 +16,7 @@ class PagesTest extends TestCase
     use RefreshDatabase;
     use CreatesSchoolData;
 
-    public function pages(): array
+    public static function pages(): array
     {
         return [
             'dashboard' => ['dashboard'],
@@ -40,18 +41,9 @@ class PagesTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider pages
-     */
+    #[DataProvider('pages')]
     public function test_page_renders(string $path): void
     {
-        if ($path === 'Teachers/{teacher}/edit') {
-            $this->markTestSkipped(
-                'Known bug: TeacherController::edit() renders pages.Teachers.edit but the file is '
-                . 'Edit.blade.php, so it 500s on case-sensitive filesystems (Linux, the Docker image).'
-            );
-        }
-
         $this->signIn();
         $section = $this->createSection($this->createClassroom($this->createGrade()));
         $teacher = $this->createTeacher();

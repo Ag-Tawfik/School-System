@@ -24,7 +24,7 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function SoftDelete($request)
     {
-        $students = student::where('Grade_id', $request->Grade_id)->where('Classroom_id', $request->Classroom_id)->where('section_id', $request->section_id)->get();
+        $students = student::where('grade_id', $request->grade_id)->where('classroom_id', $request->classroom_id)->where('section_id', $request->section_id)->get();
 
         if ($students->count() < 1) {
             return redirect()->back()->with('error_Graduated', __('لاتوجد بيانات في جدول الطلاب'));

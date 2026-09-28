@@ -36,10 +36,10 @@ class TeacherController extends Controller
 
     public function edit($id)
     {
-        $teachers = $this->Teacher->editTeachers($id);
+        $Teachers = $this->Teacher->editTeachers($id);
         $specializations = $this->Teacher->Getspecialization();
         $genders = $this->Teacher->GetGender();
-        return view('pages.Teachers.edit', compact('teachers', 'specializations', 'genders'));
+        return view('pages.Teachers.edit', compact('Teachers', 'specializations', 'genders'));
     }
 
     public function update(Request $request)

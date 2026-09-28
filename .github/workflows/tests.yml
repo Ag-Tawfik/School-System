@@ -28,7 +28,7 @@ jobs:
       # Bump this with each step of the Laravel upgrade.
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.4'
           extensions: pdo_mysql, intl, gd, zip
           coverage: none
 
